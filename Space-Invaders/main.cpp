@@ -34,10 +34,25 @@ int main() {
         triangle.setPosition(500, 100); // Set position 
 
         window->draw(square);
-
         window->draw(triangle);
-
         window->draw(circle);
+
+        sf::Texture texture;
+        texture.loadFromFile("assets/textures/player_ship.png");
+
+        sf::Sprite sprite;
+        sprite.setTexture(texture);
+        sprite.setPosition(300, 250); // Position
+        sprite.setRotation(45); // Rotation in degrees
+        sprite.setScale(0.7, 0.7); // Scale factor
+
+        window->draw(sprite);
+
+        sf::Font font; 
+        font.loadFromFile("assets/fonts/bubbleBobble.ttf"); 
+        sf::Text text("Welcome to Space Invaders!!", font, 50); 
+        text.setFillColor(sf::Color::Cyan);
+        window->draw(text);
 
         window->display();
     }
