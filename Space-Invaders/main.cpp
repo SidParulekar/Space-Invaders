@@ -10,11 +10,12 @@ private:
     int health = 3;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
     int player_score = 0;
+    int movement_speed = 5;
 
 public:
     sf::Texture player_texture;
     sf::Sprite player_sprite;
-    int movement_speed = 5;
+   
 
 
     sf::Vector2f getPosition()
@@ -32,14 +33,19 @@ public:
 
     }
 
+    int GetMoveSpeed()
+    {
+        return movement_speed;
+    }
+
     void takeDamage()
     {
 
     }
 
-    void move()
+    void move(float offsetX)
     {
-
+        position.x += offsetX;
     }
 
     void shoot()
@@ -61,7 +67,6 @@ int main()
     sf::RenderWindow window(videoMode, "SFML Window");
 
     Player player;
-    cout << "Player movement speed: " << player.movement_speed << "\n";
 
     player.player_texture.loadFromFile("assets/textures/player_ship.png");
 
@@ -75,23 +80,21 @@ int main()
 
             if (event.type == sf::Event::Closed)
                 window.close();
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-
-                player.move();
-
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
-
-                player.move();
-
-            }
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) 
+        {
 
+            player.move(-1.0f * player.GetMoveSpeed()); 
+
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+        {
+             
+            player.move(1.0f * player.GetMoveSpeed()); 
+             
+        }
 
         window.clear(sf::Color::Blue);
 
