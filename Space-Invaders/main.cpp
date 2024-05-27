@@ -15,9 +15,8 @@ private:
 public:
     sf::Texture player_texture;
     sf::Sprite player_sprite;
+
    
-
-
     sf::Vector2f getPosition()
     {
         return position;
