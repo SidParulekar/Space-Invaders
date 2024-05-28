@@ -1,36 +1,56 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h";
 
-ServiceLocator::~ServiceLocator()
+ServiceLocator::ServiceLocator()
 {
-	//Destructor to clean up resources on object deletion
+	graphic_service = nullptr;
+	createServices();
+
 }
 
+//Destructor to clean up resources on object deletion
+ServiceLocator::~ServiceLocator() 
+{
+	clearAllServices(); 
+}
+
+//creates instances of Services
 void ServiceLocator::createServices()
 {
-	//creates instances of Services
+	graphic_service = new GraphicService;
 }
 
+//deletes service instances and deallocates memory
 void ServiceLocator::clearAllServices()
 {
-	//deletes service instances and deallocates memory
+	delete graphic_service;
+	graphic_service = nullptr;
 }
 
 ServiceLocator* ServiceLocator::getInstance()
 {
-	return nullptr;
+	static ServiceLocator instance;
+	return &instance;
 }
 
+//initializes service locator
 void ServiceLocator::initialize()
 {
-	//initializes service locator 
+	graphic_service->initialize();
 }
 
+//updates services
 void ServiceLocator::update()
 {
-	//updates services
+	graphic_service->update();
 }
 
+// renders the services
 void ServiceLocator::render()
 {
-	// renders the services
+	graphic_service->render();
+}
+
+GraphicService* ServiceLocator::getGraphicService()
+{
+	return graphic_service;
 }

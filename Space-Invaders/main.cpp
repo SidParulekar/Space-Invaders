@@ -61,15 +61,19 @@ public:
 int main()
 {
 
-    GameService game_service;
+    GameService* game_service = new GameService(); 
 
-    game_service.ignite();
+    game_service->ignite();
 
-    while (game_service.isRunning())
+    while (game_service->isRunning())
     {
-        game_service.update();
-        game_service.render();
+        game_service->update();
+        game_service->render();
     }
+
+    delete game_service;
+
+
     /*sf::VideoMode videoMode = sf::VideoMode(800, 600);
 
 
