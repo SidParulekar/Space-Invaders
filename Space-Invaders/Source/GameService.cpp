@@ -1,6 +1,4 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\GameService.h"
-//#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\GraphicService.h"
-
 
 GameService::GameService() //Constructor
 {
@@ -32,6 +30,8 @@ void GameService::initializeVariables() //Initialize game window pointer with ne
 
 void GameService::update() //Updates game state
 {
+	service_locator->getEventService()->processEvents();
+
 	service_locator->update(); 
 }
 

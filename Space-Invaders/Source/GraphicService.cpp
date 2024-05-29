@@ -48,7 +48,6 @@ bool GraphicService::isGameWindowOpen()
 
 void GraphicService::onDestroy()
 {
-	delete game_window;
 	delete video_mode;
 }
 
