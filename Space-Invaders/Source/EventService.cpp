@@ -1,5 +1,5 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\EventService.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h";
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 EventService::EventService()
 {
@@ -21,6 +21,16 @@ bool EventService::isGameWindowOpen()
 bool EventService::pressedEscKey()
 {
 	return game_event.key.code == sf::Keyboard::Escape;
+}
+
+bool EventService::pressedLeftKey()
+{
+	return game_event.key.code == sf::Keyboard::Left; 
+}
+
+bool EventService::pressedRightKey()
+{
+	return game_event.key.code == sf::Keyboard::Right; 
 }
 
 bool EventService::isKeyboardEvent()

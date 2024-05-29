@@ -4,60 +4,6 @@
 
 using namespace std;
 
-/*class Player
-{
-
-private:
-    int health = 3;
-    sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
-    int player_score = 0;
-    int movement_speed = 5;
-
-public:
-    sf::Texture player_texture;
-    sf::Sprite player_sprite;
-
-   
-    sf::Vector2f getPosition()
-    {
-        return position;
-    }
-
-    int getScore()
-    {
-
-    }
-
-    void setScore(int newScore)
-    {
-
-    }
-
-    int GetMoveSpeed()
-    {
-        return movement_speed;
-    }
-
-    void takeDamage()
-    {
-
-    }
-
-    void move(float offsetX)
-    {
-        position.x += offsetX;
-    }
-
-    void shoot()
-    {
-
-    }
-
-
-
-};*/
-
-
 int main()
 {
 
