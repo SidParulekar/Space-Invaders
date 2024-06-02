@@ -1,6 +1,8 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\GraphicService.h";
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\EventService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Graphic\GraphicService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Event\EventService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Time\TimeService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 
@@ -10,6 +12,8 @@ private:
     // Declaring pointers to instances of different services:
     GraphicService* graphic_service;
     EventService* event_service;
+    PlayerService* player_service;
+    TimeService* time_service;
 
     // Constructor for initializing the ServiceLocator.
     ServiceLocator();
@@ -32,5 +36,7 @@ public:
     // Methods to Get Specific Services: 
     GraphicService* getGraphicService();   // Retrieve the GraphicService instance
     EventService* getEventService(); // Retrieve the EventService instance
+    PlayerService* getPlayerService(); // Retrieve the PlayerService instance
+    TimeService* getTimeService(); // Retrieve the TimeService instance
 
 };

@@ -1,4 +1,4 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\GameService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
 
 GameService::GameService() //Constructor
 {
@@ -40,6 +40,8 @@ void GameService::render() // Renders each frame in the game window
 
 	//Sets Game window with background color as specified in GraphicService
 	game_window->clear(service_locator->getGraphicService()->getWindowColor());
+
+	service_locator->render();
 	
 	game_window->display(); 
 }

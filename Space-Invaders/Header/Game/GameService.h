@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h";
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include <SFML/Graphics.hpp>
 
 class GameService

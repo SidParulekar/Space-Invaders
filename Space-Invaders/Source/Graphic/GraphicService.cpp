@@ -1,4 +1,4 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\GraphicService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Graphic\GraphicService.h"
 
 GraphicService::GraphicService()
 {
@@ -25,6 +25,7 @@ sf::RenderWindow* GraphicService::createGameWindow()
 void GraphicService::initialize()
 {
 	game_window = createGameWindow();
+	game_window->setFramerateLimit(frame_rate); 
 }
 
 sf::RenderWindow* GraphicService::getGameWindow()

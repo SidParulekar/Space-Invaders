@@ -21,6 +21,8 @@ public:
 	void update();
 	void processEvents();
 	bool pressedEscKey();
+	bool pressedLeftKey();
+	bool pressedRightKey();
 	bool isKeyboardEvent();
 
 };
