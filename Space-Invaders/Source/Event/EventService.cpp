@@ -1,68 +1,76 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Event\EventService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
-EventService::EventService()
+namespace Event
 {
-	game_window = nullptr;
-}
+	using namespace Global;
 
-EventService::~EventService() = default;
+	EventService::EventService()
+	{
+		game_window = nullptr;
+	}
 
-void EventService::initialize()
-{
-	game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow(); 
-}
+	EventService::~EventService() = default;
 
-bool EventService::isGameWindowOpen()
-{
-	return game_window != nullptr; 
-}
+	void EventService::initialize()
+	{
+		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow(); 
+	}
 
-bool EventService::pressedEscKey()
-{
-	return game_event.key.code == sf::Keyboard::Escape;
-}
+	bool EventService::isGameWindowOpen()
+	{
+		return game_window != nullptr;
+	}
 
-bool EventService::pressedLeftKey()
-{
-	return game_event.key.code == sf::Keyboard::Left; 
-}
+	bool EventService::pressedEscKey()
+	{
+		return game_event.key.code == sf::Keyboard::Escape;
+	}
 
-bool EventService::pressedRightKey()
-{
-	return game_event.key.code == sf::Keyboard::Right; 
-}
+	bool EventService::pressedLeftKey()
+	{
+		return game_event.key.code == sf::Keyboard::Left;
+	}
 
-bool EventService::isKeyboardEvent()
-{
-	return game_event.type == sf::Event::KeyPressed;
-}
+	bool EventService::pressedRightKey()
+	{
+		return game_event.key.code == sf::Keyboard::Right;
+	}
 
-bool EventService::gameWindowWasClosed()
-{
-	return game_event.type == sf::Event::Closed; 
-}
+	bool EventService::isKeyboardEvent()
+	{
+		return game_event.type == sf::Event::KeyPressed;
+	}
 
-bool EventService::hasQuitGame()
-{
-	return (isKeyboardEvent() && pressedEscKey()); 
-}
+	bool EventService::gameWindowWasClosed()
+	{
+		return game_event.type == sf::Event::Closed;
+	}
 
-void EventService::update()
-{
-}
+	bool EventService::hasQuitGame()
+	{
+		return (isKeyboardEvent() && pressedEscKey());
+	}
 
-void EventService::processEvents()
-{
-	if (isGameWindowOpen()) { 
-		while (game_window->pollEvent(game_event)) { 
-			// Check for window closure
-			if (gameWindowWasClosed() || hasQuitGame()) 
-			{
-				game_window->close(); 
+	void EventService::update()
+	{
+	}
+
+	void EventService::processEvents()
+	{
+		if (isGameWindowOpen()) {
+			while (game_window->pollEvent(game_event)) {
+				// Check for window closure
+				if (gameWindowWasClosed() || hasQuitGame())
+				{
+					game_window->close();
+				}
 			}
 		}
-	} 
+	}
+
 }
+
+
 
 

@@ -1,37 +1,39 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class PlayerController; 
-
-class PlayerView
+namespace Player
 {
-private:
+    class PlayerController;
 
-    const sf::String player_texture_path = "assets/textures/player_ship.png";
+    class PlayerView
+    {
+    private:
 
-    const float player_sprite_width = 60.f;
-    const float player_sprite_height = 60.f;
+        const sf::String player_texture_path = "assets/textures/player_ship.png";
 
-    sf::Texture player_texture;
-    sf::Sprite player_sprite;
+        const float player_sprite_width = 60.f;
+        const float player_sprite_height = 60.f;
+
+        sf::Texture player_texture;
+        sf::Sprite player_sprite;
 
 
-    sf::RenderWindow* game_window;
+        sf::RenderWindow* game_window;
 
-    PlayerController* player_controller;
+        PlayerController* player_controller;
 
-    void initializePlayerSprite(); // To create the player ship to be rendered in the game window
-    void scalePlayerSprite(); // To set the scale of the player ship according to the specified width and height
+        void initializePlayerSprite(); // To create the player ship to be rendered in the game window
+        void scalePlayerSprite(); // To set the scale of the player ship according to the specified width and height
 
-public:
+    public:
 
-    PlayerView();
-    ~PlayerView();
+        PlayerView();
+        ~PlayerView();
 
-    void initialize(PlayerController* controller);
-    void update();
-    void render();
+        void initialize(PlayerController* controller);
+        void update();
+        void render();
 
-    
+    };
+}
 
-};
