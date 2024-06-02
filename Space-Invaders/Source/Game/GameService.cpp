@@ -1,57 +1,65 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
 
-GameService::GameService() //Constructor
+
+namespace Game
 {
-	service_locator = nullptr;
-	game_window = nullptr;
-}
+	using namespace Global;
 
-GameService::~GameService() // Destroys instances and frees up memory
-{
-	destroy();
-}
+	GameService::GameService() //Constructor
+	{
+		service_locator = nullptr;
+		game_window = nullptr;
+	}
 
-void GameService::ignite() // Starts the game
-{
-	service_locator = ServiceLocator::getInstance();
-	initialize();
-}
+	GameService::~GameService() // Destroys instances and frees up memory
+	{
+		destroy();
+	}
 
-void GameService::initialize() //Sets up the game
-{
-	service_locator->initialize();
-	initializeVariables();
-}
+	void GameService::ignite() // Starts the game
+	{
+		service_locator = Global::ServiceLocator::getInstance();  
+		initialize();
+	}
 
-void GameService::initializeVariables() //Initialize game window pointer with new game window instance 
-{
-	game_window = service_locator->getGraphicService()->getGameWindow(); 
-}
+	void GameService::initialize() //Sets up the game
+	{
+		service_locator->initialize();
+		initializeVariables();
+	}
 
-void GameService::update() //Updates game state
-{
-	service_locator->getEventService()->processEvents();
+	void GameService::initializeVariables() //Initialize game window pointer with new game window instance 
+	{
+		game_window = service_locator->getGraphicService()->getGameWindow();
+	}
 
-	service_locator->update(); 
-}
+	void GameService::update() //Updates game state
+	{
+		service_locator->getEventService()->processEvents();
 
-void GameService::render() // Renders each frame in the game window
-{
+		service_locator->update();
+	}
 
-	//Sets Game window with background color as specified in GraphicService
-	game_window->clear(service_locator->getGraphicService()->getWindowColor());
+	void GameService::render() // Renders each frame in the game window
+	{
 
-	service_locator->render();
-	
-	game_window->display(); 
-}
+		//Sets Game window with background color as specified in GraphicService
+		game_window->clear(service_locator->getGraphicService()->getWindowColor());
 
-void GameService::destroy() //Performs clean up tasks
-{
-	delete game_window;
-}
+		service_locator->render();
 
-bool GameService::isRunning() // Checks whether the game is still running 
-{
-	return service_locator->getGraphicService()->isGameWindowOpen();
+		game_window->display();
+	}
+
+	void GameService::destroy() //Performs clean up tasks
+	{
+		delete game_window;
+	}
+
+	bool GameService::isRunning() // Checks whether the game is still running 
+	{
+		return service_locator->getGraphicService()->isGameWindowOpen();
+	}
+
+
 }
