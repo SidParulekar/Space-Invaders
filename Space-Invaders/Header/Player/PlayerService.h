@@ -1,6 +1,7 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\PlayerController.h"
 #include <SFML/Graphics.hpp>
+
+class PlayerController;
 
 class PlayerService
 {

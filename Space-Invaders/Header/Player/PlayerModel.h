@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-enum PlayerState
+enum class PlayerState
 {
 	ALIVE,
 	DEAD
