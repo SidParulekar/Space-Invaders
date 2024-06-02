@@ -2,30 +2,22 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include <SFML/Graphics.hpp>
 
-namespace Game
+class GameService
 {
-	using namespace Global; 
-	class ServiceLocator;
+private:
+	ServiceLocator* service_locator;
+	sf::RenderWindow* game_window;
 
-	class GameService
-	{
-	private:
-		Global::ServiceLocator* service_locator; 
-		sf::RenderWindow* game_window;
+	void initialize();
+	void initializeVariables();
+	void destroy();
 
-		void initialize();
-		void initializeVariables();
-		void destroy();
+public:
+	GameService();
+	~GameService();
 
-	public:
-		GameService();
-		~GameService();
-
-		void ignite();
-		void update();
-		void render();
-		bool isRunning();
-	};
-
-}
-
+	void ignite();
+	void update();
+	void render();
+	bool isRunning();
+};
