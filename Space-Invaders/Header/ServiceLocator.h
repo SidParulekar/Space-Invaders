@@ -6,37 +6,46 @@
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 
-class ServiceLocator
+namespace Global
 {
-private:
-    // Declaring pointers to instances of different services:
-    GraphicService* graphic_service;
-    EventService* event_service;
-    PlayerService* player_service;
-    TimeService* time_service;
+    using namespace Graphic;
+    using namespace Event;
+    using namespace Player; 
+    using namespace Time;
 
-    // Constructor for initializing the ServiceLocator.
-    ServiceLocator();
+    class ServiceLocator
+    {
+    private:
+        // Declaring pointers to instances of different services:
+        GraphicService* graphic_service;
+        EventService* event_service;
+        PlayerService* player_service;
+        TimeService* time_service;
 
-    // Destructor for cleaning up resources upon object deletion.
-    ~ServiceLocator();
+        // Constructor for initializing the ServiceLocator.
+        ServiceLocator();
 
-    // Private Methods:
-    void createServices(); 			// Creates instances of all services.
-    void clearAllServices(); 		//	Deletes and deallocates memory for all services.
+        // Destructor for cleaning up resources upon object deletion.
+        ~ServiceLocator();
 
-public:
-    // Public Methods:
-    static ServiceLocator* getInstance();  // Provides a method to access the unique ServiceLocator instance (object).
+        // Private Methods:
+        void createServices(); 			// Creates instances of all services.
+        void clearAllServices(); 		//	Deletes and deallocates memory for all services.
 
-    void initialize(); 			//	Initializes the ServiceLocator.
-    void update(); 				//	Updates all services.
-    void render(); 				//	Renders the services.
+    public:
+        // Public Methods:
+        static ServiceLocator* getInstance();  // Provides a method to access the unique ServiceLocator instance (object).
 
-    // Methods to Get Specific Services: 
-    GraphicService* getGraphicService();   // Retrieve the GraphicService instance
-    EventService* getEventService(); // Retrieve the EventService instance
-    PlayerService* getPlayerService(); // Retrieve the PlayerService instance
-    TimeService* getTimeService(); // Retrieve the TimeService instance
+        void initialize(); 			//	Initializes the ServiceLocator.
+        void update(); 				//	Updates all services.
+        void render(); 				//	Renders the services.
 
-};
+        // Methods to Get Specific Services: 
+        GraphicService* getGraphicService();   // Retrieve the GraphicService instance
+        EventService* getEventService(); // Retrieve the EventService instance
+        PlayerService* getPlayerService(); // Retrieve the PlayerService instance
+        TimeService* getTimeService(); // Retrieve the TimeService instance
+
+    };
+
+}

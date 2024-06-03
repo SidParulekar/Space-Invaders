@@ -3,36 +3,42 @@
 
 using namespace std;
 
-class GraphicService
+namespace Graphic
 {
-private:
-	const string game_window_title = "Space Invaders";
 
-	const int game_window_width = 800;
-	const int game_window_height = 600;
+	class GraphicService
+	{
+	private:
+		const string game_window_title = "Space Invaders";
 
-	const int frame_rate = 60;
+		const int game_window_width = 800;
+		const int game_window_height = 600;
 
-	const sf::Color window_color = sf::Color::Blue;
+		const int frame_rate = 60;
 
-	sf::VideoMode* video_mode;
-	sf::RenderWindow* game_window;
+		const sf::Color window_color = sf::Color::Blue;
 
-	void setVideoMode();
-	void onDestroy(); //method to run when window is deleted
+		sf::VideoMode* video_mode;
+		sf::RenderWindow* game_window;
 
-public:
-	GraphicService();
-	~GraphicService();
+		void setVideoMode();
+		void onDestroy(); //method to run when window is deleted
 
-	sf::RenderWindow* createGameWindow();
+	public:
+		GraphicService();
+		~GraphicService();
 
-	void initialize();
-	void update();
-	void render();
-	bool isGameWindowOpen();
+		sf::RenderWindow* createGameWindow();
 
-	sf::RenderWindow* getGameWindow();
-	sf::Color getWindowColor();
+		void initialize();
+		void update();
+		void render();
+		bool isGameWindowOpen();
 
-};
+		sf::RenderWindow* getGameWindow();
+		sf::Color getWindowColor();
+
+	};
+
+}
+

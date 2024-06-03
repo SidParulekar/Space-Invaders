@@ -1,22 +1,27 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 
-class PlayerController;
 
-class PlayerService
+
+namespace Player
 {
+    class PlayerController;
 
-private:
+    class PlayerService
+    {
 
-    PlayerController* player_controller;
+    private:
 
-public:
-   
-    PlayerService();
-    ~PlayerService();
+        PlayerController* player_controller;
 
-    void initialize();
-    void update();
-    void render();
-   
-};
+    public:
+
+        PlayerService();
+        ~PlayerService();
+
+        void initialize();
+        void update();
+        void render();
+    };
+}
