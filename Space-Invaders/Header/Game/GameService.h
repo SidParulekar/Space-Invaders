@@ -5,8 +5,7 @@
 namespace Game
 {
 	using namespace Global; 
-	class ServiceLocator;
-
+	
 	enum class GameState
 	{
 		BOOT,
@@ -17,7 +16,7 @@ namespace Game
 	class GameService
 	{
 	private:
-		Global::ServiceLocator* service_locator; 
+		ServiceLocator* service_locator; 
 		sf::RenderWindow* game_window;
 
 		static GameState current_state;
