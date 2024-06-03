@@ -5,6 +5,8 @@ namespace Game
 {
 	using namespace Global;
 
+	GameState GameService::current_state = GameState::BOOT; 
+
 	GameService::GameService() //Constructor
 	{
 		service_locator = nullptr;
@@ -59,6 +61,16 @@ namespace Game
 	bool GameService::isRunning() // Checks whether the game is still running 
 	{
 		return service_locator->getGraphicService()->isGameWindowOpen();
+	}
+
+	void GameService::setGameState(GameState new_state)
+	{
+		current_state = new_state;
+	}
+
+	GameState GameService::getGameState()
+	{
+		return current_state;
 	}
 
 
