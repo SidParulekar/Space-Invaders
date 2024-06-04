@@ -21,6 +21,8 @@ namespace Game
 
 		static GameState current_state;
 
+		void showMainMenu();
+
 		void initialize();
 		void initializeVariables();
 		void destroy();

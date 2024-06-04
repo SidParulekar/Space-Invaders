@@ -42,7 +42,10 @@ namespace UI
 			// To set the scale of the buttons according to the specified width and height and set their position
 			void scaleAllButttons(); 
 			void scaleButton(sf::Sprite* button_to_scale); 
-			void positionButtons(); 
+			void positionButtons();
+
+			void processButtonInteractions();
+			bool clickedButton(sf::Sprite*, sf::Vector2f);
 
 		public:
 			MainMenuController();

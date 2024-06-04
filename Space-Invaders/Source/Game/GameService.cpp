@@ -28,18 +28,12 @@ namespace Game
 	{
 		service_locator->initialize();
 		initializeVariables();
+		showMainMenu(); 
 	}
 
 	void GameService::initializeVariables() //Initialize game window pointer with new game window instance 
 	{
 		game_window = service_locator->getGraphicService()->getGameWindow();
-	}
-
-	void GameService::update() //Updates game state
-	{
-		service_locator->getEventService()->processEvents();
-
-		service_locator->update();
 	}
 
 	void GameService::render() // Renders each frame in the game window
@@ -53,14 +47,9 @@ namespace Game
 		game_window->display();
 	}
 
-	void GameService::destroy() //Performs clean up tasks
+	void GameService::showMainMenu()
 	{
-		delete game_window;
-	}
-
-	bool GameService::isRunning() // Checks whether the game is still running 
-	{
-		return service_locator->getGraphicService()->isGameWindowOpen();
+		setGameState(GameState::MAIN_MENU);
 	}
 
 	void GameService::setGameState(GameState new_state)
@@ -72,6 +61,25 @@ namespace Game
 	{
 		return current_state;
 	}
+
+	void GameService::update() //Updates game state
+	{
+		service_locator->getEventService()->processEvents();
+
+		service_locator->update();
+	}
+
+	bool GameService::isRunning() // Checks whether the game is still running 
+	{
+		return service_locator->getGraphicService()->isGameWindowOpen();
+	}
+
+	void GameService::destroy() //Performs clean up tasks
+	{
+		delete game_window;
+	}
+
+	
 
 
 }
