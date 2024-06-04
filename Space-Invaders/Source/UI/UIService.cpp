@@ -32,6 +32,12 @@ namespace UI
 
 	void UIService::render()
 	{
+		main_menu_controller->render();
+	}
+
+	UIService::~UIService() 
+	{
+		destroy();
 	}
 
 	void UIService::destroy()
@@ -39,9 +45,6 @@ namespace UI
 		delete main_menu_controller;
 	}
 
-	UIService::~UIService()
-	{
-		destroy();
-	}
+	
 }
 
