@@ -11,8 +11,8 @@ namespace Graphic
 	private:
 		const string game_window_title = "Space Invaders";
 
-		const int game_window_width = 800;
-		const int game_window_height = 600;
+		const int game_window_width = 1920;
+		const int game_window_height = 1080;
 
 		const int frame_rate = 60;
 
