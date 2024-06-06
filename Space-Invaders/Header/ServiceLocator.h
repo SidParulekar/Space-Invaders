@@ -4,6 +4,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Time\TimeService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\UIService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 
@@ -14,6 +15,7 @@ namespace Global
     using namespace Player; 
     using namespace Time;
     using namespace UI;
+    using namespace Enemy;
 
     class ServiceLocator
     {
@@ -24,6 +26,7 @@ namespace Global
         PlayerService* player_service;
         TimeService* time_service;
         UIService* ui_service;
+        EnemyService* enemy_service;
 
         // Constructor for initializing the ServiceLocator.
         ServiceLocator();
@@ -49,6 +52,7 @@ namespace Global
         PlayerService* getPlayerService(); // Retrieve the PlayerService instance
         TimeService* getTimeService(); // Retrieve the TimeService instance
         UIService* getUIService(); // Retrieve the UIService instance
+        EnemyService* getEnemyService(); // Retrieve the EnemyService instance
 
     };
 
