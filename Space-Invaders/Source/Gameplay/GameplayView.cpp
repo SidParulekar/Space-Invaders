@@ -4,6 +4,7 @@
 namespace Gameplay
 {
 	using namespace Global;
+	
 
 	GameplayView::GameplayView()
 	{
@@ -13,10 +14,10 @@ namespace Gameplay
 	void GameplayView::initialize()
 	{
 		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializeBackgroundImage();
+		//initializeBackgroundImage();
 	}
 
-	void GameplayView::initializeBackgroundImage()
+	/*void GameplayView::initializeBackgroundImage()
 	{
 		if (background_texture.loadFromFile(background_texture_path)) 
 		{
@@ -31,7 +32,7 @@ namespace Gameplay
 			static_cast<float>(game_window->getSize().x) / background_sprite.getTexture()->getSize().x,
 			static_cast<float>(game_window->getSize().y) / background_sprite.getTexture()->getSize().y
 		);
-	}
+	}*/
 
 	void GameplayView::update()
 	{
@@ -39,6 +40,7 @@ namespace Gameplay
 
 	void GameplayView::render()
 	{
+		background_sprite = ServiceLocator::getInstance()->getUIService()->getMainMenuController()->getBackgroundSprite();
 		game_window->draw(background_sprite);
 	}
 

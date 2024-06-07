@@ -3,7 +3,6 @@
 
 namespace UI
 {
-	using namespace MainMenu;
 	using namespace Game;
 
 	UIService::UIService()
@@ -14,7 +13,7 @@ namespace UI
 
 	void UIService::createControllers()
 	{
-		main_menu_controller = new MainMenuController();
+		main_menu_controller = new MainMenuController(); 
 	}
 	
 	void UIService::initialize()
@@ -45,6 +44,11 @@ namespace UI
 			return main_menu_controller->render(); 
 			break;
 		}
+	}
+
+	MainMenuController* UIService::getMainMenuController()
+	{
+		return main_menu_controller;
 	}
 
 	UIService::~UIService() 

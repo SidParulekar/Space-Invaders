@@ -53,6 +53,8 @@ namespace UI
 			void initialize();
 			void update();
 			void render();
+
+			sf::Sprite getBackgroundSprite();
 		};
 	}
 }

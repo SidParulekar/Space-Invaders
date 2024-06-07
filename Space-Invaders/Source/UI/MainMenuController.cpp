@@ -99,6 +99,11 @@ namespace UI
 			game_window->draw(quit_button_sprite);
 		}
 
+		sf::Sprite MainMenuController::getBackgroundSprite()
+		{
+			return background_sprite;
+		}
+
 		void MainMenuController::update()
 		{
 			processButtonInteractions();
