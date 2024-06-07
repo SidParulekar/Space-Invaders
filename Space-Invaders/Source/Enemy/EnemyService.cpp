@@ -1,36 +1,55 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Time\TimeService.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Time;
 
 	Enemy::EnemyService::EnemyService()
 	{
-		enemy_controller = nullptr;
 	}
 
 	void Enemy::EnemyService::initialize()
 	{
-		spawnEnemy();
-	}
-
-	EnemyController* EnemyService::spawnEnemy()
-	{
-		enemy_controller = new EnemyController();
-		enemy_controller->initialize();
-		return enemy_controller;
+		spawn_timer = spawn_interval;	
 	}
 
 	void Enemy::EnemyService::update()
 	{
-		enemy_controller->update(); 
+		updateSpawnTimer(); 
+		processEnemySpawn(); 
+
+		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->update(); 
+	}
+
+	void EnemyService::updateSpawnTimer()
+	{
+		spawn_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+	}
+
+	void EnemyService::processEnemySpawn()
+	{
+		if (spawn_timer >= spawn_interval)
+		{
+			spawnEnemy();
+			spawn_timer = 0.0f;
+		}
+	}
+
+	void EnemyService::spawnEnemy()
+	{
+		EnemyController* enemy_controller = new EnemyController();
+		enemy_controller->initialize();
+
+		enemy_list.push_back(enemy_controller);
 	}
 
 	void Enemy::EnemyService::render()
 	{
-		enemy_controller->render();
+		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->render();
 	}
 
 	Enemy::EnemyService::~EnemyService()
@@ -40,7 +59,7 @@ namespace Enemy
 
 	void EnemyService::destroy()
 	{
-		delete enemy_controller;
+		for (int i = 0; i < enemy_list.size(); i++) delete (enemy_list[i]);
 	}
 }
 
