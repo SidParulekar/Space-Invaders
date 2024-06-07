@@ -1,12 +1,10 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Time\TimeService.h"
 
 namespace Enemy
 {
 	using namespace Global;
-	using namespace Time;
 
 	Enemy::EnemyService::EnemyService()
 	{
