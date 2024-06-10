@@ -1,6 +1,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyModel.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyView.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Enemy
@@ -9,7 +10,7 @@ namespace Enemy
 
 	EnemyController::EnemyController()
 	{
-		enemy_model = new EnemyModel();
+		enemy_model = new EnemyModel(EnemyType::ZAPPER); 
 		enemy_view = new EnemyView();
 	}
 
@@ -100,9 +101,37 @@ namespace Enemy
 		else enemy_model->setEnemyPosition(currentPosition); 
 	}
 
+	void EnemyController::getRandomInitialPosition()
+	{
+	}
+
+	void EnemyController::handleOutOfBounds()
+	{
+	}
+
 	sf::Vector2f EnemyController::getEnemyPosition()
 	{
 		return enemy_model->getEnemyPosition();
+	}
+
+	float EnemyController::setHorizontalMovementSpeed(float speed)
+	{
+		horizontal_movement_speed = speed;
+	}
+
+	float EnemyController::getHorizontalMovementSpeed()
+	{
+		return horizontal_movement_speed;
+	}
+
+	float EnemyController::setVerticalMovementSpeed(float speed)
+	{
+		vertical_movement_speed = speed;
+	}
+
+	float EnemyController::getVerticalMovementSpeed()
+	{
+		return vertical_movement_speed;
 	}
 
 	void EnemyController::render()
