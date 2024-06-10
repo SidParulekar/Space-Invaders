@@ -16,7 +16,7 @@ namespace Enemy
 		float horizontal_movement_speed;
 		float vertical_movement_speed;
 
-		virtual void move();
+		virtual void move() = 0;
 		void moveLeft();
 		void moveRight();
 		void moveDown();
