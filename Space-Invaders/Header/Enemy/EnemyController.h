@@ -35,9 +35,11 @@ namespace Enemy
 		sf::Vector2f getEnemyPosition();
 
 		float getHorizontalMovementSpeed();
-		float setHorizontalMovementSpeed(float speed);
+		void setHorizontalMovementSpeed(float speed);
 
 		float getVerticalMovementSpeed();
-		float setVerticalMovementSpeed(float speed);
+		void setVerticalMovementSpeed(float speed);
+
+		EnemyType getEnemyType();
 	};
 }

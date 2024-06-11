@@ -5,10 +5,14 @@ namespace Enemy
 {
 	namespace Controllers
 	{
+        enum class EnemyType;
+
 		class ZapperController : public EnemyController
 		{
         private:
             float vertical_travel_distance = 100.f;
+
+            EnemyModel* enemy_model;
 
             void move() override;
             void moveLeft();
@@ -16,7 +20,7 @@ namespace Enemy
             void moveDown();
 
         public:
-            ZapperController();
+            ZapperController(EnemyType type); 
             ~ZapperController();
 
             void initialize() override;

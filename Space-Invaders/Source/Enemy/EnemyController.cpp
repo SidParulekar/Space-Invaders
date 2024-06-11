@@ -114,7 +114,7 @@ namespace Enemy
 		return enemy_model->getEnemyPosition();
 	}
 
-	float EnemyController::setHorizontalMovementSpeed(float speed)
+	void EnemyController::setHorizontalMovementSpeed(float speed)
 	{
 		horizontal_movement_speed = speed;
 	}
@@ -124,9 +124,14 @@ namespace Enemy
 		return horizontal_movement_speed;
 	}
 
-	float EnemyController::setVerticalMovementSpeed(float speed)
+	void EnemyController::setVerticalMovementSpeed(float speed)
 	{
 		vertical_movement_speed = speed;
+	}
+
+	EnemyType EnemyController::getEnemyType()
+	{
+		return enemy_model->getEnemyType();
 	}
 
 	float EnemyController::getVerticalMovementSpeed()

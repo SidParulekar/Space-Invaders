@@ -5,17 +5,20 @@ namespace Enemy
 {
 	namespace Controllers
 	{
+		enum class EnemyType;
+
 		class SubZeroController : public EnemyController
 		{
 		private:
-			float movement_speed = 100.0f;
+			float vertical_movement_speed = 100.0f;
+			EnemyModel* enemy_model;
 
 			void move() override; 
 			void moveDown();
 
 		public:
 
-			SubZeroController();
+			SubZeroController(EnemyType type);
 			~SubZeroController();
 
 			void initialize() override;
