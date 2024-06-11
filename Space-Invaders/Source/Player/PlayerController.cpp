@@ -27,7 +27,7 @@ namespace Player
 
 	void PlayerController::moveLeft()
 	{
-		currentPosition = player_model->getPlayerPosition();
+		currentPosition = getPlayerPosition(); 
 		currentPosition.x -= player_model->player_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		currentPosition.x = std::max(currentPosition.x, player_model->left_most_position.x);
@@ -36,7 +36,7 @@ namespace Player
 
 	void PlayerController::moveRight()
 	{
-		currentPosition = player_model->getPlayerPosition();
+		currentPosition = getPlayerPosition(); 
 		currentPosition.x += player_model->player_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 		currentPosition.x = std::min(currentPosition.x, player_model->right_most_position.x);

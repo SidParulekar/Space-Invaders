@@ -2,10 +2,12 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\MainMenu\MainMenuController.h"
 namespace UI
 {
+	using namespace MainMenu;
+
 	class UIService
 	{
 	private:
-		MainMenu::MainMenuController* main_menu_controller;
+		MainMenuController* main_menu_controller;   
 
 		void createControllers();
 		void initializeControllers();
@@ -20,5 +22,8 @@ namespace UI
 		void initialize();
 		void update();
 		void render();
+
+		MainMenuController* getMainMenuController(); 
+
 	};
 }

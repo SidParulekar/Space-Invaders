@@ -11,12 +11,11 @@ namespace Player
 		game_window = nullptr;
 	}
 
-	void PlayerView::scalePlayerSprite()
+	void PlayerView::initialize(PlayerController* controller)
 	{
-		player_sprite.setScale(
-			static_cast<float>(player_sprite_width) / player_sprite.getTexture()->getSize().x,
-			static_cast<float>(player_sprite_height) / player_sprite.getTexture()->getSize().y
-		);
+		player_controller = controller;
+		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+		initializePlayerSprite();
 	}
 
 	void PlayerView::initializePlayerSprite()
@@ -28,16 +27,17 @@ namespace Player
 		}
 	}
 
-	void PlayerView::initialize(PlayerController* controller)
+	void PlayerView::scalePlayerSprite()
 	{
-		player_controller = controller;
-		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializePlayerSprite();
+		player_sprite.setScale(
+			static_cast<float>(player_sprite_width) / player_sprite.getTexture()->getSize().x,
+			static_cast<float>(player_sprite_height) / player_sprite.getTexture()->getSize().y
+		);
 	}
-
+	
 	void PlayerView::update()
 	{
-		player_sprite.setPosition(player_controller->getPlayerPosition());
+		player_sprite.setPosition(player_controller->getPlayerPosition()); 
 	}
 
 	void PlayerView::render()
