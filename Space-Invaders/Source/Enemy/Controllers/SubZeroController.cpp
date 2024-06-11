@@ -10,12 +10,9 @@ namespace Enemy
 
 	namespace Controllers
 	{
-		SubZeroController::SubZeroController(EnemyType type)
+		SubZeroController::SubZeroController(EnemyType type) : EnemyController(type) 
 		{
-		}
 
-		SubZeroController::~SubZeroController()
-		{
 		}
 
 		void SubZeroController::initialize()
@@ -40,6 +37,11 @@ namespace Enemy
 			currentPosition.y += vertical_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			enemy_model->setEnemyPosition(currentPosition);
+		}
+
+
+		SubZeroController::~SubZeroController()
+		{
 		}
 
 		

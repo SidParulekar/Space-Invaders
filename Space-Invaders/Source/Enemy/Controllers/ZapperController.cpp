@@ -9,6 +9,17 @@ namespace Enemy
 
 	namespace Controllers
 	{
+
+		ZapperController::ZapperController(EnemyType type) : EnemyController(type) 
+		{ 
+
+		}
+
+		void ZapperController::initialize()
+		{
+			EnemyController::initialize();
+		}
+
 		void ZapperController::move()
 		{
 			switch (enemy_model->getMovementDirection())
@@ -87,18 +98,12 @@ namespace Enemy
 			else enemy_model->setEnemyPosition(currentPosition);
 		}
 
-		ZapperController::ZapperController(EnemyType type)
-		{
-		}
 
 		ZapperController::~ZapperController()
 		{
 		}
 
-		void ZapperController::initialize()
-		{
-			EnemyController::initialize();
-		}
+		
 	}
 }
 

@@ -8,15 +8,16 @@ namespace Enemy
 {
 	using namespace Global;
 
-	EnemyController::EnemyController()
+	EnemyController::EnemyController(EnemyType type)
 	{
-		enemy_model = new EnemyModel(EnemyType::ZAPPER); 
+		enemy_model = new EnemyModel(type); 
 		enemy_view = new EnemyView();
 	}
 
 	void EnemyController::initialize()
 	{
 		enemy_model->initialize();
+		enemy_model->setEnemyPosition(getRandomInitialPosition());
 		enemy_view->initialize(this);
 	}
 
@@ -24,6 +25,7 @@ namespace Enemy
 	{
 		move();
 		enemy_view->update();
+		handleOutOfBounds();
 	}
 
 	/*void EnemyController::move()
@@ -42,7 +44,7 @@ namespace Enemy
 			moveDown();
 			break;
 		}
-	}*/
+	}
 
 	void EnemyController::moveLeft()
 	{
@@ -99,14 +101,33 @@ namespace Enemy
 
 		// Else enemy keeps moving down
 		else enemy_model->setEnemyPosition(currentPosition); 
-	}
+	}*/
 
-	void EnemyController::getRandomInitialPosition()
+	sf::Vector2f EnemyController::getRandomInitialPosition()
 	{
+		// Calculate distance between left most position and a random position between left most and right most
+		float x_offset_distance = (std::rand() % static_cast<int>(enemy_model->right_most_position.x - enemy_model->left_most_position.x));
+
+		// Add the calculated distance to left most position to get starting position of enemy
+		float x_position = enemy_model->left_most_position.x + x_offset_distance;
+
+		// The y position remains the same.
+		float y_position = enemy_model->left_most_position.y;
+
+		return sf::Vector2f(x_position, y_position);
 	}
 
 	void EnemyController::handleOutOfBounds()
 	{
+		sf::Vector2f enemyPosition = getEnemyPosition();
+		sf::Vector2u windowSize = ServiceLocator::getInstance()->getGraphicService()->getGameWindow()->getSize();
+
+		// Destroy the enemy if it goes out of bounds.
+		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
+			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
+		{
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+		}
 	}
 
 	sf::Vector2f EnemyController::getEnemyPosition()
@@ -114,29 +135,14 @@ namespace Enemy
 		return enemy_model->getEnemyPosition();
 	}
 
-	void EnemyController::setHorizontalMovementSpeed(float speed)
-	{
-		horizontal_movement_speed = speed;
-	}
-
-	float EnemyController::getHorizontalMovementSpeed()
-	{
-		return horizontal_movement_speed;
-	}
-
-	void EnemyController::setVerticalMovementSpeed(float speed)
-	{
-		vertical_movement_speed = speed;
-	}
-
 	EnemyType EnemyController::getEnemyType()
 	{
 		return enemy_model->getEnemyType();
 	}
 
-	float EnemyController::getVerticalMovementSpeed()
+	EnemyState EnemyController::getEnemyState()
 	{
-		return vertical_movement_speed;
+		return enemy_model->getEnemyState();
 	}
 
 	void EnemyController::render()

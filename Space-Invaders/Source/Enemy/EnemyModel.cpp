@@ -10,6 +10,7 @@ namespace Enemy
 
 	EnemyModel::~EnemyModel()
 	{
+
 	}
 
 	void EnemyModel::initialize()
