@@ -28,30 +28,6 @@ namespace Enemy
 		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->update(); 
 	}
 
-	EnemyType EnemyService::getRandomEnemyType()
-	{
-		int randomType = std::rand() % 2;
-		return static_cast<Enemy::EnemyType>(randomType);
-	}
-
-	EnemyController* EnemyService::createEnemy(EnemyType enemy_type)
-	{
-		switch (enemy_type)
-		{
-		case::Enemy::EnemyType::ZAPPER:
-			return new Controllers::ZapperController(enemy_type); 
-
-			/*case::Enemy::EnemyType::THUNDER_SNAKE:
-				return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE);*/
-
-		case::Enemy::EnemyType::SUBZERO:
-			return new Controllers::SubZeroController(enemy_type);
-
-			/*case::Enemy::EnemyType::UFO:
-				return new UFOController(Enemy::EnemyType::UFO);*/
-		}
-	}
-
 	void EnemyService::updateSpawnTimer()
 	{
 		spawn_timer += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
@@ -76,15 +52,39 @@ namespace Enemy
 		return enemy_controller;
 	}
 
-	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
+	EnemyType EnemyService::getRandomEnemyType()
 	{
-		enemy_list.erase(std::remove(enemy_list.begin(), enemy_list.end(), enemy_controller), enemy_list.end());
-		delete enemy_controller;
+		int randomType = std::rand() % 2;
+		return static_cast<Enemy::EnemyType>(randomType);
+	}
+
+	EnemyController* EnemyService::createEnemy(EnemyType enemy_type)
+	{
+		switch (enemy_type)
+		{
+		case::Enemy::EnemyType::ZAPPER:
+			return new Controllers::ZapperController(enemy_type); 
+
+			/*case::Enemy::EnemyType::THUNDER_SNAKE:
+				return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE);*/
+
+		case::Enemy::EnemyType::SUBZERO:
+			return new Controllers::SubZeroController(enemy_type);
+
+			/*case::Enemy::EnemyType::UFO:
+				return new UFOController(Enemy::EnemyType::UFO);*/
+		}
 	}
 
 	void Enemy::EnemyService::render()
 	{
 		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->render();
+	}
+	
+	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
+	{
+		enemy_list.erase(std::remove(enemy_list.begin(), enemy_list.end(), enemy_controller), enemy_list.end());
+		delete enemy_controller;
 	}
 
 	Enemy::EnemyService::~EnemyService()
