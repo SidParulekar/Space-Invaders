@@ -11,6 +11,8 @@ namespace Global
 	using namespace UI;
 	using namespace Enemy;
 	using namespace Gameplay;
+	using namespace Element;
+	using namespace Sound;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -21,6 +23,8 @@ namespace Global
 		ui_service = nullptr;
 		enemy_service = nullptr;
 		gameplay_service = nullptr;
+		element_service = nullptr;
+		sound_service = nullptr;
 		createServices();
 
 	}
@@ -35,6 +39,8 @@ namespace Global
 		ui_service = new UIService();
 		enemy_service = new EnemyService(); 
 		gameplay_service = new GameplayService();
+		element_service = new ElementService();
+		sound_service = new SoundService();
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -53,6 +59,8 @@ namespace Global
 		ui_service->initialize();
 		enemy_service->initialize();
 		gameplay_service->initialize();
+		element_service->initialize();
+		sound_service->initialize();
 	}
 
 	// Updates services
@@ -66,6 +74,7 @@ namespace Global
 			gameplay_service->update();
 			player_service->update();
 			enemy_service->update();
+			element_service->update();
 		}
 		ui_service->update();
 	}
@@ -79,6 +88,7 @@ namespace Global
 			gameplay_service->render(); 
 			player_service->render();
 			enemy_service->render();
+			element_service->render();
 		}
 		ui_service->render();
 	}
@@ -118,6 +128,16 @@ namespace Global
 		return gameplay_service;
 	}
 
+	ElementService* ServiceLocator::getElementService()
+	{
+		return element_service;
+	}
+
+	SoundService* ServiceLocator::getSoundService()
+	{
+		return sound_service;
+	}
+
 
 	//Destructor to clean up resources on object deletion
 	ServiceLocator::~ServiceLocator()
@@ -135,6 +155,8 @@ namespace Global
 		delete ui_service;
 		delete enemy_service;
 		delete gameplay_service;
+		delete element_service;
+		delete sound_service;
 		graphic_service = nullptr;
 		event_service = nullptr;
 		player_service = nullptr;
@@ -142,6 +164,8 @@ namespace Global
 		ui_service = nullptr;
 		enemy_service = nullptr;
 		gameplay_service = nullptr;
+		element_service = nullptr;
+		sound_service = nullptr;
 	}
 
 }
