@@ -185,7 +185,19 @@
     <ClInclude Include="Header\Bullets\BulletService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header\Bullets\IProjectile.h">
+    <ClInclude Include="Header\Projectiles\IProjectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullets\BulletConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullets\BulletController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullets\BulletModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\Bullets\BulletView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

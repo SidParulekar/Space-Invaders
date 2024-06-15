@@ -162,8 +162,12 @@
     <ClCompile Include="Source\UI\UIService.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Bullets\BulletConfig.h" />
+    <ClInclude Include="Header\Bullets\BulletController.h" />
+    <ClInclude Include="Header\Bullets\BulletModel.h" />
     <ClInclude Include="Header\Bullets\BulletService.h" />
-    <ClInclude Include="Header\Bullets\IProjectile.h" />
+    <ClInclude Include="Header\Bullets\BulletView.h" />
+    <ClInclude Include="Header\Projectiles\IProjectile.h" />
     <ClInclude Include="Header\Config.h" />
     <ClInclude Include="Header\Elements\Bunker\BunkerController.h" />
     <ClInclude Include="Header\Elements\Bunker\BunkerModel.h" />
