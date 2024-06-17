@@ -133,7 +133,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Source\Bullets\BulletController.cpp" />
+    <ClCompile Include="Source\Bullets\BulletModel.cpp" />
     <ClCompile Include="Source\Bullets\BulletService.cpp" />
+    <ClCompile Include="Source\Bullets\BulletView.cpp" />
     <ClCompile Include="Source\Config.cpp" />
     <ClCompile Include="Source\Elements\Bunker\BunkerController.cpp" />
     <ClCompile Include="Source\Elements\Bunker\BunkerModel.cpp" />
