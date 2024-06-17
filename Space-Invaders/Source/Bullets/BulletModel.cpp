@@ -9,7 +9,7 @@ namespace Bullet
 		bullet_type = type;
 	}
 
-	void BulletModel::initialize(MovementDirection direction, sf::Vector2f position)
+	void BulletModel::initialize(sf::Vector2f position, MovementDirection direction)
 	{
 		bullet_direction = direction;
 		bullet_position = position;

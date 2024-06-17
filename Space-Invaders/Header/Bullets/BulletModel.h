@@ -20,7 +20,7 @@ namespace Bullet
 		BulletModel(BulletType type);
 		~BulletModel();
 
-		void initialize(MovementDirection direction, sf::Vector2f position);
+		void initialize(sf::Vector2f position, MovementDirection direction);
 		
 		sf::Vector2f getBulletPosition();
 		void setBulletPosition(sf::Vector2f position);
