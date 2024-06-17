@@ -32,7 +32,7 @@ namespace Bullet
 
 	BulletType BulletModel::getBulletType()
 	{
-		bullet_type;
+		return bullet_type;
 	}
 
 	void BulletModel::setMovementDirection(MovementDirection direction)

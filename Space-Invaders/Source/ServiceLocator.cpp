@@ -93,7 +93,7 @@ namespace Global
 			gameplay_service->render(); 
 			player_service->render();
 			enemy_service->render();
-			bullet_service->update();
+			bullet_service->render();
 			element_service->render();
 		}
 		ui_service->render();
@@ -179,11 +179,6 @@ namespace Global
 		element_service = nullptr;
 		sound_service = nullptr;
 		bullet_service = nullptr;
-	}
-
-	void ServiceLocator::deleteServiceLocator()
-	{
-		delete this;
 	}
 
 }

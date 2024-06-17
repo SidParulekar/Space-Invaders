@@ -72,8 +72,6 @@ namespace Global
         SoundService* getSoundService(); // Retrieve the SoundService instance
         BulletService* getBulletService(); // Retrieve the BulletService instance
 
-        void deleteServiceLocator();
-
     };
 
 }

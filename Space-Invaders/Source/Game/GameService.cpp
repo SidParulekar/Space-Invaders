@@ -77,7 +77,6 @@ namespace Game
 	void GameService::destroy() //Performs clean up tasks
 	{
 		delete game_window;
-		service_locator->deleteServiceLocator();
 	}
 
 	

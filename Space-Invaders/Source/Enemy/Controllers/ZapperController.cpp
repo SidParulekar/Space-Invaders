@@ -98,6 +98,13 @@ namespace Enemy
 			else enemy_model->setEnemyPosition(currentPosition);
 		}
 
+		void ZapperController::fireBullet()
+		{
+			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
+				enemy_model->getEnemyPosition() + enemy_model->bullet_position_offset,
+				Bullet::MovementDirection::DOWN);
+		}
+
 
 		ZapperController::~ZapperController()
 		{
