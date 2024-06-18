@@ -227,5 +227,8 @@
     <ClInclude Include="Header\Bullets\Controllers\FrostBulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Collectibles\ICollectible.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
