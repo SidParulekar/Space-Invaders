@@ -22,6 +22,7 @@ namespace Player
 
 		const sf::Vector2f left_most_position = sf::Vector2f(50.f, 950.f); // Specifies the left most boundary upto which player ship can move 
 		const sf::Vector2f right_most_position = sf::Vector2f(1800.f, 950.f); // Specifies the right most boundary upto which player ship can move
+		const sf::Vector2f bullet_position_offset = sf::Vector2f(20.f, 50.f);
 
 		PlayerModel();
 		~PlayerModel();

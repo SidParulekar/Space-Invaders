@@ -16,13 +16,17 @@ namespace Enemy
 		EnemyView* enemy_view;
 		EnemyModel* enemy_model;
 
-		virtual void move() = 0;
-		//void moveLeft();
-		//void moveRight();
-		//void moveDown();
+		float rate_of_fire = 3.f;
+		float elapsed_fire_duration = 0.f;
 
+		virtual void move() = 0;
+		
 		sf::Vector2f getRandomInitialPosition();
 		void handleOutOfBounds();
+
+		void updateFireTimer();
+		void processBulletFire();
+		virtual void fireBullet() = 0;
 
 	public:
 		EnemyController(EnemyType type);

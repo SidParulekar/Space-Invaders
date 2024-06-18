@@ -24,84 +24,25 @@ namespace Enemy
 	void EnemyController::update()
 	{
 		move();
+		updateFireTimer();
+		processBulletFire();
 		enemy_view->update();
 		handleOutOfBounds();
 	}
 
-	/*void EnemyController::move()
+	void EnemyController::updateFireTimer()
 	{
-		switch (enemy_model->getMovementDirection())
-		{
-		case::Enemy::MovementDirection::LEFT:
-			moveLeft();
-			break;
-
-		case::Enemy::MovementDirection::RIGHT:
-			moveRight();
-			break;
-
-		case::Enemy::MovementDirection::DOWN:
-			moveDown();
-			break;
-		}
+		elapsed_fire_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); //update the elapsed duration
 	}
 
-	void EnemyController::moveLeft()
+	void EnemyController::processBulletFire() //if elapsed duration is equal to or more than the amount of time we want to wait until firing than call the fire method.
 	{
-		// Enemy moves left
-		sf::Vector2f currentPosition = getEnemyPosition(); 
-		currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
-		// If enemy has reached left most position then start moving down
-		if (currentPosition.x <= enemy_model->left_most_position.x) 
+		if (elapsed_fire_duration >= rate_of_fire)
 		{
-			enemy_model->setMovementDirection(MovementDirection::DOWN); 
-			enemy_model->setReferencePosition(currentPosition); 
+			fireBullet();
+			elapsed_fire_duration = 0.f; //set elapsed duration back to 0.
 		}
-
-		// Else enemy keeps moving left
-		else enemy_model->setEnemyPosition(currentPosition); 
 	}
-
-	void EnemyController::moveRight()
-	{
-		// Enemy moves right
-		sf::Vector2f currentPosition = getEnemyPosition();  
-		currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime(); 
-
-		// If enemy has reached right most position then start moving down
-		if (currentPosition.x >= enemy_model->right_most_position.x) 
-		{
-			enemy_model->setMovementDirection(MovementDirection::DOWN); 
-			enemy_model->setReferencePosition(currentPosition); 
-		}
-
-		// Else enemy keeps moving right
-		else enemy_model->setEnemyPosition(currentPosition); 
-	}
-
-	void EnemyController::moveDown()
-	{
-		// Enemy moves down
-		sf::Vector2f currentPosition = getEnemyPosition(); 
-		currentPosition.y += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
-
-		// If enemy has moved down by defined amount then enemy starts to move horizontally
-		if (currentPosition.y >= enemy_model->getReferencePosition().y + enemy_model->vertical_travel_distance) 
-		{
-			// If enemy had moved down from left most position then enemy starts to move right
-			if (enemy_model->getReferencePosition().x <= enemy_model->left_most_position.x) 
-			{
-				enemy_model->setMovementDirection(MovementDirection::RIGHT); 
-			}
-			
-			// Else enemy moves left
-			else enemy_model->setMovementDirection(MovementDirection::LEFT); 
-		}
-
-		// Else enemy keeps moving down
-		else enemy_model->setEnemyPosition(currentPosition); 
-	}*/
 
 	sf::Vector2f EnemyController::getRandomInitialPosition()
 	{

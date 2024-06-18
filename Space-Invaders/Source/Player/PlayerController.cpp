@@ -56,6 +56,18 @@ namespace Player
 		{
 			moveRight();
 		}
+
+		if (event_service->pressedLeftMouseButton())
+		{
+			fireBullet();
+		}
+	}
+
+	void PlayerController::fireBullet()
+	{
+		ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET, 
+			player_model->getPlayerPosition() + player_model->bullet_position_offset, 
+			Bullet::MovementDirection::UP); 
 	}
 
 	void PlayerController::update()

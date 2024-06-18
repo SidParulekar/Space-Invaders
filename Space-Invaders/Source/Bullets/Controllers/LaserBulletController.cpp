@@ -1,0 +1,20 @@
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\Controllers\LaserBulletController.h"
+
+namespace Bullet
+{
+	namespace Controller
+	{
+		LaserBulletController::LaserBulletController(BulletType type) : BulletController(type) 
+		{ 
+		}
+
+		LaserBulletController::~LaserBulletController() 
+		{ 
+		}
+
+		void LaserBulletController::initialize(sf::Vector2f position, MovementDirection direction)
+		{
+			BulletController::initialize(position, direction);
+		}
+	}
+}
