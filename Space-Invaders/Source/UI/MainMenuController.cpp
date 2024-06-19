@@ -1,5 +1,4 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\MainMenu\MainMenuController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Graphic\GraphicService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Event\EventService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
@@ -10,7 +9,6 @@ namespace UI
 	{
 		using namespace Global; 
 		using namespace Game;
-		using namespace Graphic;
 		using namespace Event;
 
 		MainMenuController::MainMenuController()
@@ -102,6 +100,10 @@ namespace UI
 		sf::Sprite MainMenuController::getBackgroundSprite()
 		{
 			return background_sprite;
+		}
+
+		void MainMenuController::show()
+		{
 		}
 
 		void MainMenuController::update()

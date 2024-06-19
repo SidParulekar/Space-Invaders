@@ -1,12 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
 
 namespace UI
 {
 	namespace MainMenu
 	{
-		class MainMenuController
+		class MainMenuController: public Interface::IUIController
 		{
 		private:
 			sf::RenderWindow* game_window;
@@ -50,9 +51,11 @@ namespace UI
 		public:
 			MainMenuController();
 
-			void initialize();
-			void update();
-			void render();
+			void initialize() override;
+			void update() override;
+			void render() override;
+
+			void show() override;
 
 			sf::Sprite getBackgroundSprite();
 		};
