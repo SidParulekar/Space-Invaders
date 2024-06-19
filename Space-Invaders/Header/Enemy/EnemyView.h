@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
 #include <SFML/Graphics.hpp>
 
 namespace Enemy
@@ -9,20 +10,17 @@ namespace Enemy
 	class EnemyView
 	{
 	private:
-		//const sf::String subzero_texture_path = "assets/textures/subzero.png";
-		//const sf::String zapper_texture_path = "assets/textures/zapper.png";
 
 		const float enemy_sprite_width = 60.f;
 		const float enemy_sprite_height = 60.f;
 
 		EnemyController* enemy_controller;
 
-		sf::RenderWindow* game_window;
-		sf::Texture enemy_texture;
-		sf::Sprite enemy_sprite;
+		UI::UIElement::ImageView* enemy_image;
 
-		void initializeEnemySprite(EnemyType type);
-		void scaleEnemySprite();
+		void createEnemyImage();
+		void initializeEnemyImage();
+		sf::String getEnemyTexturePath();
 
 	public:
 		EnemyView();

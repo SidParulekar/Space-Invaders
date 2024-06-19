@@ -7,66 +7,58 @@
 namespace Enemy
 {
 	using namespace Global;
+	using namespace UI::UIElement;
 
 	EnemyView::EnemyView()
 	{
-		game_window = nullptr;
+		createEnemyImage();
 	}
-	
+
+	void EnemyView::createEnemyImage()
+	{
+		enemy_image = new ImageView();
+	}
+
 	void EnemyView::initialize(EnemyController* controller)
 	{
 		enemy_controller = controller;
-		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializeEnemySprite(enemy_controller->getEnemyType());
+		initializeEnemyImage();
 	}
 
-	void EnemyView::initializeEnemySprite(EnemyType type)
+	void EnemyView::initializeEnemyImage()
 	{
-		switch (type)
+		enemy_image->initialize(getEnemyTexturePath(), enemy_sprite_width, enemy_sprite_height, enemy_controller->getEnemyPosition()); 
+	}
+
+	sf::String EnemyView::getEnemyTexturePath()
+	{
+		switch (enemy_controller->getEnemyType())
 		{
 		case::Enemy::EnemyType::SUBZERO:
-			if (enemy_texture.loadFromFile(Config::subzero_texture_path)) 
-			{
-				enemy_sprite.setTexture(enemy_texture);
-				scaleEnemySprite();
-			}
-			break;
+			return Config::subzero_texture_path;
+			
 		case::Enemy::EnemyType::ZAPPER:
-			if (enemy_texture.loadFromFile(Config::zapper_texture_path)) 
-			{
-				enemy_sprite.setTexture(enemy_texture);
-				scaleEnemySprite();
-			}
-			break;
+			return Config::zapper_texture_path;
+			
 		case::Enemy::EnemyType::UFO:
-			if (enemy_texture.loadFromFile(Config::ufo_texture_path)) 
-			{
-				enemy_sprite.setTexture(enemy_texture);
-				scaleEnemySprite();
-			}
-			break;
-
+			return Config::ufo_texture_path;
+			
 		}
-	}
-	void EnemyView::scaleEnemySprite()
-	{
-		enemy_sprite.setScale(
-			static_cast<float>(enemy_sprite_width) / enemy_sprite.getTexture()->getSize().x,
-			static_cast<float>(enemy_sprite_height) / enemy_sprite.getTexture()->getSize().y
-		);
 	}
 	
 	void EnemyView::update()
 	{
-		enemy_sprite.setPosition(enemy_controller->getEnemyPosition());
+		enemy_image->setPosition(enemy_controller->getEnemyPosition());
+		enemy_image->update();
 	}
 
 	void EnemyView::render()
 	{
-		game_window->draw(enemy_sprite);
+		enemy_image->render();
 	}
 
 	EnemyView::~EnemyView()
 	{
+		delete enemy_image;
 	}
 }

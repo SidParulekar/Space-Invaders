@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
 #include <SFML/Graphics.hpp>
 
 namespace Player
@@ -7,23 +8,18 @@ namespace Player
 
     class PlayerView
     {
-    private:
-
-        const sf::String player_texture_path = "assets/textures/player_ship.png";
+    private: 
 
         const float player_sprite_width = 60.f;
-        const float player_sprite_height = 60.f;
-
-        sf::Texture player_texture;
-        sf::Sprite player_sprite;
-
-
-        sf::RenderWindow* game_window;
+        const float player_sprite_height = 60.f;      
 
         PlayerController* player_controller;
 
-        void initializePlayerSprite(); // To create the player ship to be rendered in the game window
-        void scalePlayerSprite(); // To set the scale of the player ship according to the specified width and height
+        UI::UIElement::ImageView* player_image;
+
+        void createPlayerImage();
+        void initializePlayerImage();
+        sf::String getPlayerTexturePath();
 
     public:
 
