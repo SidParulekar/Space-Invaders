@@ -9,6 +9,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\ElementService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Sounds\SoundService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 
@@ -24,6 +25,7 @@ namespace Global
     using namespace Element;
     using namespace Sound;
     using namespace Bullet;
+    using namespace Powerup;
 
     class ServiceLocator
     {
@@ -39,6 +41,7 @@ namespace Global
         ElementService* element_service;
         SoundService* sound_service;
         BulletService* bullet_service;
+        PowerupService* powerup_service;
 
         // Constructor for initializing the ServiceLocator.
         ServiceLocator();
@@ -71,6 +74,7 @@ namespace Global
         ElementService* getElementService(); // Retrieve the ElementService instance
         SoundService* getSoundService(); // Retrieve the SoundService instance
         BulletService* getBulletService(); // Retrieve the BulletService instance
+        PowerupService* getPowerupService(); // Retrieve the PowerupService instance
 
     };
 
