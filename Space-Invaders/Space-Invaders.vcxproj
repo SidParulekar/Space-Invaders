@@ -222,6 +222,7 @@
     <ClInclude Include="Header\ServiceLocator.h" />
     <ClInclude Include="Header\Sounds\SoundService.h" />
     <ClInclude Include="Header\Time\TimeService.h" />
+    <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuController.h" />
     <ClInclude Include="Header\UI\UIService.h" />
   </ItemGroup>
