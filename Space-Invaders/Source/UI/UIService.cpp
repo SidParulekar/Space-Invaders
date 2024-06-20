@@ -1,10 +1,12 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\UIService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\TextView.h"
 
 namespace UI
 {
 	using namespace Game;
 	using namespace Interface;
+	using namespace UIElement;
 
 	UIService::UIService()
 	{
@@ -19,6 +21,7 @@ namespace UI
 	
 	void UIService::initialize()
 	{
+		TextView::initializeTextView();
 		initializeControllers();
 	}
 
