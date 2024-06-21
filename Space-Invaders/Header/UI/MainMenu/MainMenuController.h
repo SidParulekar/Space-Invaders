@@ -1,7 +1,8 @@
 #pragma once
-
-#include <SFML/Graphics.hpp>
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ButtonView.h"
+#include <SFML/Graphics.hpp>
+
 
 namespace UI
 {
@@ -10,51 +11,42 @@ namespace UI
 		class MainMenuController: public Interface::IUIController
 		{
 		private:
-			sf::RenderWindow* game_window;
+			const float button_width = 400.f;
+			const float button_height = 140.f;
 
-			const float button_width = 300.0f;
-			const float button_height = 300.0f;
+			const float play_button_y_position = 500.f;
+			const float instructions_button_y_position = 700.f;
+			const float quit_button_y_position = 900.f;
 
-			const sf::String background_texture_path = "assets/textures/space_invaders_bg.png";
-			const sf::String play_button_texture_path = "assets/textures/play_button.png";
-			const sf::String instruction_button_texture_path = "assets/textures/instructions_button.png";
-			const sf::String quit_button_texture_path = "assets/textures/quit_button.png";
+			const float background_alpha = 85.f;
 
-			sf::Texture background_texture; 
-			sf::Sprite background_sprite; 
+			UIElement::ImageView* background_image;
 
-			sf::Texture play_button_texture;
-			sf::Sprite play_button_sprite;
+			UIElement::ButtonView* play_button;
+			UIElement::ButtonView* instructions_button;
+			UIElement::ButtonView* quit_button;
 
-			sf::Texture instructions_button_texture;
-			sf::Sprite instructions_button_sprite;
-
-			sf::Texture quit_button_texture;
-			sf::Sprite quit_button_sprite;
-
+			void createImage();
+			void createButtons();
 			void initializeBackgroundImage();
-			void scaleBackgroundImage();
-
-			// To create the buttons to be rendered in the game window
 			void initializeButtons();
-			bool loadButtonTexturesFromFile();
-			void setButtonSprites();
+			void registerButtonCallback();
 
-			// To set the scale of the buttons according to the specified width and height and set their position
-			void scaleAllButttons(); 
-			void scaleButton(sf::Sprite* button_to_scale); 
-			void positionButtons();
 
-			void processButtonInteractions();
-			bool clickedButton(sf::Sprite*, sf::Vector2f);
+			void playButtonCallback(); 
+			void instructionsButtonCallback();
+			void quitButtonCallback();
+
+			
+			void destroy(); 
 
 		public:
 			MainMenuController();
+			~MainMenuController(); 
 
 			void initialize() override;
 			void update() override;
 			void render() override;
-
 			void show() override;
 
 			sf::Sprite getBackgroundSprite();

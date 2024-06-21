@@ -58,7 +58,7 @@ namespace UI
             float y_position = image_sprite.getGlobalBounds().getPosition().y;
 
             image_sprite.setPosition(x_position, y_position);
-        }
+        }        
 
         void ImageView::update()
         {
@@ -74,6 +74,12 @@ namespace UI
                 game_window->draw(image_sprite);
             }
         }
+
+        sf::Sprite ImageView::getImageSprite()
+        {
+            return image_sprite;
+        }
+
 
         ImageView::~ImageView() = default; 
     }
