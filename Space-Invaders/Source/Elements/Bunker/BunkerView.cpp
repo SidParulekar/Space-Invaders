@@ -1,52 +1,55 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerView.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Element
 {
 	using namespace Global;
+	using namespace UI::UIElement;
+
 	namespace Bunker
 	{
 		BunkerView::BunkerView()
 		{
+			createBunkerImage();
+		}
+
+		void BunkerView::createBunkerImage()
+		{
+			bunker_image = new ImageView();
 		}
 
 		void BunkerView::initialize(BunkerController* controller)
 		{
 			bunker_controller = controller;
-			game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-			initializeBunkerSprite();
+			initializeBunkerImage();
 		}
 
-		void BunkerView::initializeBunkerSprite()
+		void BunkerView::initializeBunkerImage()
 		{
-			if (bunker_texture.loadFromFile(bunker_texture_path))
-			{
-				bunker_sprite.setTexture(bunker_texture);
-				scaleBunkerSprite();
-			}
+			bunker_image->initialize(getBunkerTexturePath(), bunker_sprite_width, bunker_sprite_height, bunker_controller->getBunkerPosition());
 		}
 
-		void BunkerView::scaleBunkerSprite()
+		sf::String BunkerView::getBunkerTexturePath()
 		{
-			bunker_sprite.setScale(
-				static_cast<float>(bunker_sprite_width) / bunker_sprite.getTexture()->getSize().x, 
-				static_cast<float>(bunker_sprite_height) / bunker_sprite.getTexture()->getSize().y 
-			);
-		}
+			return Config::bunker_texture_path;
+		}		
 		
 		void BunkerView::update()
 		{
-			bunker_sprite.setPosition(bunker_controller->getBunkerPosition()); 
+			bunker_image->setPosition(bunker_controller->getBunkerPosition());
+			bunker_image->update(); 
 		}
 
 		void BunkerView::render()
 		{
-			game_window->draw(bunker_sprite); 
+			bunker_image->render(); 
 		}
 
 		BunkerView::~BunkerView()
 		{
+			delete bunker_image; 
 		}
 	}
 }

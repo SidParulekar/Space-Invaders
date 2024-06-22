@@ -8,74 +8,67 @@ namespace Powerup
 {
 	using namespace Global;
 
+	using namespace UI::UIElement;
+
 	PowerupView::PowerupView() 
 	{ 
+		createPowerupImage(); 
+	}
 
+	void PowerupView::createPowerupImage()
+	{
+		powerup_image = new ImageView();
 	}
 
 	void PowerupView::initialize(PowerupController* controller)
 	{
 		powerup_controller = controller;
-		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
-		initializePowerupSprite(powerup_controller->getPowerupType());
+		initializePowerupImage();
 	}
 
-
-	void PowerupView::initializePowerupSprite(PowerupType type)
+	void PowerupView::initializePowerupImage()
 	{
-		switch (type)
+		powerup_image->initialize(getPowerupTexturePath(), powerup_sprite_width, powerup_sprite_height, powerup_controller->getCollectiblePosition()); 
+	}
+
+	sf::String PowerupView::getPowerupTexturePath()
+	{
+		switch (powerup_controller->getPowerupType())
 		{
-		case::Powerup::PowerupType::TRIPPLE_LASER:
-			if (powerup_texture.loadFromFile(Config::tripple_laser_texture_path))
-			{
-				powerup_sprite.setTexture(powerup_texture);
-				scalePowerupSprite();
-			}
-			break;
 		case::Powerup::PowerupType::SHIELD:
-			if (powerup_texture.loadFromFile(Config::shield_texture_path))
-			{
-				powerup_sprite.setTexture(powerup_texture);
-				scalePowerupSprite();
-			}
-			break;
-		case::Powerup::PowerupType::RAPID_FIRE:
-			if (powerup_texture.loadFromFile(Config::rapid_fire_texture_path))
-			{
-				powerup_sprite.setTexture(powerup_texture);
-				scalePowerupSprite();
-			}
-			break;
-		case::Powerup::PowerupType::OUTSCAL_BOMB:
-			if (powerup_texture.loadFromFile(Config::outscal_bomb_texture_path))
-			{
-				powerup_sprite.setTexture(powerup_texture);
-				scalePowerupSprite();
-			}
-			break;
-		}
-	}
+			return Config::shield_texture_path;
 
-	void PowerupView::scalePowerupSprite()
-	{
-		powerup_sprite.setScale(
-			static_cast<float>(powerup_sprite_width) / powerup_sprite.getTexture()->getSize().x,
-			static_cast<float>(powerup_sprite_height) / powerup_sprite.getTexture()->getSize().y
-		);
+		case::Powerup::PowerupType::TRIPPLE_LASER:
+			return Config::tripple_laser_texture_path;
+
+		case::Powerup::PowerupType::RAPID_FIRE:
+			return Config::rapid_fire_texture_path;
+
+		case::Powerup::PowerupType::OUTSCAL_BOMB:
+			return Config::outscal_bomb_texture_path;
+		}
 	}
 
 	void PowerupView::update()
 	{
-		powerup_sprite.setPosition(powerup_controller->getCollectiblePosition());
+		powerup_image->setPosition(powerup_controller->getCollectiblePosition());
+		powerup_image->update();
 	}
 
 	void PowerupView::render()
 	{
-		game_window->draw(powerup_sprite);
+		powerup_image->render();
 	}
 
 	PowerupView::~PowerupView() 
 	{ 
-
+		destroy();
 	}
+
+	void PowerupView::destroy()
+	{
+		delete powerup_image;
+	}
+
+
 }

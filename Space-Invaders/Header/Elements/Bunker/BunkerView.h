@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
 #include <SFML/Graphics.hpp>
 
 namespace Element
@@ -15,16 +16,13 @@ namespace Element
 			const float bunker_sprite_width = 80.f;
 			const float bunker_sprite_height = 80.f;
 
-			sf::Texture bunker_texture;
-			sf::Sprite bunker_sprite;
-
-
-			sf::RenderWindow* game_window;
-
 			BunkerController* bunker_controller;
 
-			void initializeBunkerSprite(); // To create the bunker to be rendered in the game window
-			void scaleBunkerSprite(); // To set the scale of the bunker according to the specified width and height
+			UI::UIElement::ImageView* bunker_image;
+
+			void createBunkerImage();
+			void initializeBunkerImage();
+			sf::String getBunkerTexturePath();
 
 		public:
 			BunkerView();

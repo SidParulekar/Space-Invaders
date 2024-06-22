@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
 #include <SFML/Graphics.hpp>
 
 namespace Bullet
@@ -14,12 +15,11 @@ namespace Bullet
 
 		BulletController* bullet_controller;
 
-		sf::RenderWindow* game_window;
-		sf::Texture bullet_texture;
-		sf::Sprite bullet_sprite;
+		UI::UIElement::ImageView* bullet_image;
 
-		void initializeBulletSprite(BulletType type);
-		void scaleBulletSprite();
+		void createBulletImage();
+		void initializeBulletImage();
+		sf::String getBulletTexturePath();
 
 	public:
 		BulletView();

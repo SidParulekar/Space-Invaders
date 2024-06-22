@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
 #include <SFML/Graphics.hpp>
 
 namespace Powerup
@@ -12,14 +13,14 @@ namespace Powerup
         const float powerup_sprite_width = 30.f;
         const float powerup_sprite_height = 30.f;
 
-        sf::RenderWindow* game_window;
-        sf::Texture powerup_texture;
-        sf::Sprite powerup_sprite;
-
         PowerupController* powerup_controller;
+        UI::UIElement::ImageView* powerup_image;
 
-        void initializePowerupSprite(PowerupType);
-        void scalePowerupSprite();
+        void createPowerupImage();
+        void initializePowerupImage();
+        sf::String getPowerupTexturePath();
+
+        void destroy();
 
 
     public:
