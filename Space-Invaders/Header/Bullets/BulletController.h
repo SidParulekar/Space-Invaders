@@ -1,6 +1,8 @@
 #pragma once
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Projectiles\IProjectile.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
+
 
 namespace Bullet
 {
@@ -21,7 +23,7 @@ namespace Bullet
 		void handleOutOfBounds();
 
 	public:
-		BulletController(BulletType type);
+		BulletController(BulletType type, Entity::EntityType owner_entity);
 		virtual ~BulletController() override;
 		void initialize(sf::Vector2f position, Bullet::MovementDirection direction) override;
 		void update() override;
@@ -29,6 +31,8 @@ namespace Bullet
 
 		sf::Vector2f getProjectilePosition() override;
 		BulletType getBulletType();
+		Entity::EntityType getOwnerEntityType();
+
 
 	};
 }

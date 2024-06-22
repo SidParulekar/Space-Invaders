@@ -35,6 +35,8 @@ namespace UI
 		{
 			initializeBackgroundImage();
 			initializeButtons();
+			registerButtonCallback();
+			ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic(); 
 		}
 
 		void MainMenuController::initializeBackgroundImage()
@@ -42,7 +44,7 @@ namespace UI
 			sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
 			background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0, 0));
-			background_image->setImageAlpha(background_alpha);
+			//background_image->setImageAlpha(background_alpha);
 		}
 
 		sf::Sprite MainMenuController::getBackgroundSprite()
@@ -83,23 +85,21 @@ namespace UI
 			instructions_button->registerCallbackFuntion(std::bind(&MainMenuController::instructionsButtonCallback, this)); 
 			quit_button->registerCallbackFuntion(std::bind(&MainMenuController::quitButtonCallback, this)); 
 		}
-		
-		void MainMenuController::render()
-		{
-			background_image->render(); 
-			play_button->render();
-			instructions_button->render(); 
-			quit_button->render(); 
-		}
 
 		void MainMenuController::show()
 		{
 			background_image->show();
 			play_button->show();
 			instructions_button->show();
-			quit_button->show();
-
-			ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic(); 
+			quit_button->show();	
+		}
+		
+		void MainMenuController::render()
+		{ 
+			background_image->render(); 
+			play_button->render();
+			instructions_button->render(); 
+			quit_button->render(); 
 		}
 
 		void MainMenuController::update()

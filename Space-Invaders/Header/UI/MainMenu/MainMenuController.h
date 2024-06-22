@@ -18,7 +18,7 @@ namespace UI
 			const float instructions_button_y_position = 700.f;
 			const float quit_button_y_position = 900.f;
 
-			const float background_alpha = 85.f;
+			//const float background_alpha = 85.f;
 
 			UIElement::ImageView* background_image;
 

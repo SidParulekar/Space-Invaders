@@ -62,11 +62,11 @@ namespace Global
 		event_service->initialize();
 		player_service->initialize();
 		time_service->initialize();
+		sound_service->initialize(); 
 		ui_service->initialize();
 		enemy_service->initialize();
 		gameplay_service->initialize();
 		element_service->initialize();
-		sound_service->initialize();
 		bullet_service->initialize();
 		powerup_service->initialize();
 

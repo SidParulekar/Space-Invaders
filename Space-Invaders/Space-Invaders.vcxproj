@@ -191,6 +191,7 @@
     <ClInclude Include="Header\Bullets\Controllers\TorpedoController.h" />
     <ClInclude Include="Header\Collectibles\ICollectible.h" />
     <ClInclude Include="Header\Enemy\Controllers\UFOController.h" />
+    <ClInclude Include="Header\Entities\EntityConfig.h" />
     <ClInclude Include="Header\Powerups\Controllers\OutscalBombController.h" />
     <ClInclude Include="Header\Powerups\Controllers\RapidFireController.h" />
     <ClInclude Include="Header\Powerups\Controllers\ShieldController.h" />

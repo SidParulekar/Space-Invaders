@@ -314,5 +314,8 @@
     <ClInclude Include="Header\UI\ButtonView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Entities\EntityConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
