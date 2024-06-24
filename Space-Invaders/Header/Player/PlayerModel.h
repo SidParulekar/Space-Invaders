@@ -33,19 +33,19 @@ namespace Player
 		const sf::Vector2f second_weapon_position_offset = sf::Vector2f(45.f, 0.f);
 		const sf::Vector2f third_weapon_position_offset = sf::Vector2f(-45.f, 0.f);
 
-		const float shiled_powerup_duration = 10.f;
+		const float shield_powerup_duration = 10.f;
 		const float rapid_fire_powerup_duration = 10.f;
-		const float tripple_laser_powerup_duration = 10.f;
+		const float triple_laser_powerup_duration = 10.f;
 
 		const float freeze_duration = 2.f;
 
 		const float fire_cooldown_duration = 0.2f;
 		const float rapid_fire_cooldown_duration = 0.05f;
-		const float tripple_laser_position_offset = 30.f;
+		const float triple_laser_position_offset = 30.f;
 
 		float elapsed_shield_duration;
 		float elapsed_rapid_fire_duration;
-		float elapsed_tripple_laser_duration;
+		float elapsed_triple_laser_duration;
 
 		float elapsed_fire_duration;
 		float elapsed_freeze_duration;
@@ -70,11 +70,11 @@ namespace Player
 
 		bool isShieldEnabled();
 		bool isRapidFireEnabled();
-		bool isTrippleLaserEnabled();
+		bool isTripleLaserEnabled();
 
 		void setShieldState(bool value);
 		void setRapidFireState(bool value);
-		void setTrippleFireState(bool value);
+		void setTripleFireState(bool value);
 
 	};
 }

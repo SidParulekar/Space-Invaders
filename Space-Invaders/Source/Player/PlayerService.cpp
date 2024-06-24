@@ -19,6 +19,26 @@ namespace Player
 		player_controller->update();
 	}
 
+	void PlayerService::enableShield()
+	{
+		player_controller->enableShield();
+	}
+
+	void PlayerService::enableRapidFire()
+	{
+		player_controller->enableRapidFire();
+	}
+
+	void PlayerService::enableTripleLaser()
+	{
+		player_controller->enableTripleLaser();
+	}
+
+	void PlayerService::reset()
+	{
+		player_controller->reset();
+	}
+
 	void PlayerService::render()
 	{
 		player_controller->render();

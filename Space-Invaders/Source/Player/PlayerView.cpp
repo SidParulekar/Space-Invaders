@@ -46,6 +46,11 @@ namespace Player
 		player_image->render(); 
 	}
 
+	const sf::Sprite PlayerView::getPlayerSprite()
+	{
+		return player_image->getImageSprite();
+	}
+
 	PlayerView::~PlayerView()
 	{
 		delete player_image;

@@ -44,7 +44,7 @@ namespace Player
 
 		void disableShield();
 		void disableRapidFire();
-		void disableTrippleLaser();
+		void disableTripleLaser();
 
 		//void fireBullet();
 
@@ -66,7 +66,7 @@ namespace Player
 		void enableRapidFire();
 		void enableTripleLaser();
 
-		const sf::Sprite& getColliderSprite() override;
+		const sf::Sprite getColliderSprite() override;
 		void onCollision(ICollider* other_collider) override;
 
 
