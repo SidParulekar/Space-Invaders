@@ -1,7 +1,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletView.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Bullet
@@ -31,19 +31,8 @@ namespace Bullet
 	}
 
 	sf::String BulletView::getBulletTexturePath()
-	{
-		switch (bullet_controller->getBulletType())
-		{
-		case::Bullet::BulletType::LASER_BULLET:
-			return Config::laser_bullet_texture_path;
-		
-		case::Bullet::BulletType::FROST_BULLET:
-			return Config::frost_beam_texture_path;
-			
-		case::Bullet::BulletType::TORPEDO:
-			return Config::torpedoe_texture_path;
-			
-		}
+	{	
+			return BulletConfig::getBulletTexturePath(bullet_controller->getBulletType());	
 	}
 
 	void BulletView::update()
@@ -55,6 +44,11 @@ namespace Bullet
 	void BulletView::render()
 	{
 		bullet_image->render();
+	}
+
+	const sf::Sprite BulletView::getBulletSprite()
+	{
+		return bullet_image->getImageSprite();
 	}
 
 	BulletView::~BulletView()
