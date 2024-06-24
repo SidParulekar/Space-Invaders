@@ -140,6 +140,8 @@
     <ClCompile Include="Source\Bullets\Controllers\FrostBulletController.cpp" />
     <ClCompile Include="Source\Bullets\Controllers\LaserBulletController.cpp" />
     <ClCompile Include="Source\Bullets\Controllers\TorpedoController.cpp" />
+    <ClCompile Include="Source\Collisions\CollisionService.cpp" />
+    <ClCompile Include="Source\Collisions\ICollider.cpp" />
     <ClCompile Include="Source\Config.cpp" />
     <ClCompile Include="Source\Elements\Bunker\BunkerController.cpp" />
     <ClCompile Include="Source\Elements\Bunker\BunkerModel.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="Header\Bullets\Controllers\LaserBulletController.h" />
     <ClInclude Include="Header\Bullets\Controllers\TorpedoController.h" />
     <ClInclude Include="Header\Collectibles\ICollectible.h" />
+    <ClInclude Include="Header\Collisions\CollisionService.h" />
+    <ClInclude Include="Header\Collisions\ICollider.h" />
     <ClInclude Include="Header\Enemy\Controllers\UFOController.h" />
     <ClInclude Include="Header\Entities\EntityConfig.h" />
     <ClInclude Include="Header\Powerups\Controllers\OutscalBombController.h" />

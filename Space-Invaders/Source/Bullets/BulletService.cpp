@@ -21,7 +21,7 @@ namespace Bullet
 
 	BulletController* BulletService::spawnBullet(BulletType bullet_type, sf::Vector2f position, MovementDirection direction, Entity::EntityType owner_type)
 	{
-		BulletController* bullet_controller = createBullet(bullet_type);
+		BulletController* bullet_controller = createBullet(bullet_type, owner_type);
 
 		bullet_controller->initialize(position, direction);
 		bullet_list.push_back(bullet_controller);
