@@ -1,5 +1,6 @@
 #pragma once
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\GameplayUI\GameplayUIController.h"
 #include <SFML/Graphics.hpp>
 
 namespace Player
@@ -15,10 +16,22 @@ namespace Player
 	{
 	private:
 		const sf::Vector2f initial_player_position = sf::Vector2f(950.0f, 950.0f);
+
 		sf::Vector2f player_position;
 		PlayerState player_state;
 		Entity::EntityType entity_type;
 		int player_score;
+
+		friend class PlayerController; //friend class
+
+		//friend methods
+		friend void UI::GameplayUI::GameplayUIController::updateEnemiesKilledText();
+		friend void UI::GameplayUI::GameplayUIController::drawPlayerLives();
+
+		const int max_player_lives = 3; //max lives
+
+		static int player_lives;
+		static int enemies_killed;
 
 		bool b_shield;
 		bool b_rapid_fire;

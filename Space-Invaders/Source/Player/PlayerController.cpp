@@ -1,7 +1,6 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerView.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerModel.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupController.h"
@@ -27,9 +26,14 @@ namespace Player
 		player_view->initialize(this);
 	}
 
+	PlayerState PlayerController::getPlayerState()
+	{
+		return player_model->getPlayerState();
+	}
+
 	void PlayerController::update()
 	{
-		switch (player_model->getPlayerState()) 
+		switch (getPlayerState()) 
 		{
 		case::Player::PlayerState::ALIVE: 
 			processPlayerInput(); 
@@ -163,11 +167,11 @@ namespace Player
 		}
 	}
 
-
 	sf::Vector2f PlayerController::getPlayerPosition()
 	{
 		return player_model->getPlayerPosition();
 	}
+
 
 	void PlayerController::reset()
 	{
@@ -202,13 +206,21 @@ namespace Player
 		{
 			if (bullet_controller->getBulletType() == BulletType::FROST_BULLET)
 			{
-				player_model->setPlayerState(PlayerState::FROZEN);
-				player_model->elapsed_freeze_duration = player_model->freeze_duration;
+				freezePlayer(); 
 			}
-			else ServiceLocator::getInstance()->getGameplayService()->restart();
+			else
+			{
+				decreasePlayerLives(); 
+			}
 			return true;
 		}
 
+	}
+
+	void PlayerController::freezePlayer()
+	{
+		player_model->setPlayerState(PlayerState::FROZEN);
+		player_model->elapsed_freeze_duration = player_model->freeze_duration;
 	}
 
 	bool PlayerController::processEnemyCollision(ICollider* other_collider)
@@ -220,10 +232,20 @@ namespace Player
 		EnemyController* enemy_controller = dynamic_cast<EnemyController*>(other_collider);
 		if (enemy_controller)
 		{
-			ServiceLocator::getInstance()->getGameplayService()->restart();
+			decreasePlayerLives(); 
 			return true;
 		}
 		return false;
+	}
+
+	void PlayerController::decreasePlayerLives()
+	{
+		PlayerModel::player_lives -= 1;
+		if (PlayerModel::player_lives <= 0)
+		{
+			player_model->setPlayerState(PlayerState::DEAD);
+			ServiceLocator::getInstance()->getGameplayService()->restart();
+		}
 	}
 
 	bool PlayerController::processPowerupCollision(ICollider* other_collider)
@@ -268,7 +290,7 @@ namespace Player
 	void PlayerController::disableTripleLaser()
 	{
 		player_model->setTripleFireState(false);
-	}	
+	}
 
 	void PlayerController::render()
 	{

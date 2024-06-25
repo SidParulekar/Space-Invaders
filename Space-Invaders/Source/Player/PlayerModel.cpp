@@ -23,6 +23,9 @@ namespace Player
 		player_position = initial_player_position;
 		player_score = 0;
 
+		player_lives = max_player_lives;
+		enemies_killed = 0;
+
 		b_shield = false;
 		b_rapid_fire = false;
 		b_triple_laser = false;

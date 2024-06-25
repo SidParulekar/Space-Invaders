@@ -118,12 +118,13 @@ namespace Enemy
 
 	void EnemyController::render()
 	{
-		enemy_view->render();
+		enemy_view->render(); 
 	}
 
 	void EnemyController::destroy()
 	{
-		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1); 
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 
 	}
 
 	EnemyController::~EnemyController()
