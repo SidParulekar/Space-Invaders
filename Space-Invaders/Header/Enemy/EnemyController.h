@@ -1,4 +1,5 @@
 #pragma once
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
 #include <SFML/Graphics.hpp>
 
 namespace Enemy
@@ -9,7 +10,7 @@ namespace Enemy
 	enum class EnemyType;
 	enum class EnemyState;
 
-	class EnemyController
+	class EnemyController: public Collision::ICollider
 	{
 	protected:
 
@@ -28,6 +29,8 @@ namespace Enemy
 		void processBulletFire();
 		virtual void fireBullet() = 0;
 
+		void destroy();
+
 	public:
 		EnemyController(EnemyType type);
 		virtual ~EnemyController();
@@ -40,5 +43,8 @@ namespace Enemy
 
 		EnemyType getEnemyType();
 		EnemyState getEnemyState(); 
+
+		const sf::Sprite& getColliderSprite() override;
+		virtual void onCollision(ICollider* other_collider) override;
 	};
 }

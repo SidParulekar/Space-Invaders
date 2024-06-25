@@ -174,7 +174,7 @@ namespace Player
 		player_model->reset();
 	}
 
-	const sf::Sprite PlayerController::getColliderSprite()
+	const sf::Sprite& PlayerController::getColliderSprite()
 	{
 		return player_view->getPlayerSprite();
 	}
@@ -194,7 +194,8 @@ namespace Player
 	{
 		if (player_model->isShieldEnabled())
 			return false;
-
+		
+		//If player has collided with a bullet fired by enemy
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 
 		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::PLAYER)
@@ -215,6 +216,7 @@ namespace Player
 		if (player_model->isShieldEnabled())
 			return false;
 
+		//If player has collided with an enemy
 		EnemyController* enemy_controller = dynamic_cast<EnemyController*>(other_collider);
 		if (enemy_controller)
 		{
@@ -226,6 +228,7 @@ namespace Player
 
 	bool PlayerController::processPowerupCollision(ICollider* other_collider)
 	{
+		//If player has collided with a powerup
 		PowerupController* powerup_controller = dynamic_cast<PowerupController*>(other_collider);
 		if (powerup_controller)
 		{

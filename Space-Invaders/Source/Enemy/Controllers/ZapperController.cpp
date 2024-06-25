@@ -1,11 +1,13 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\ZapperController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyModel.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Entity;
 
 	namespace Controllers
 	{
@@ -102,7 +104,7 @@ namespace Enemy
 		{
 			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
 				enemy_model->getEnemyPosition() + enemy_model->bullet_position_offset,
-				Bullet::MovementDirection::DOWN);
+				Bullet::MovementDirection::DOWN, EntityType::ENEMY);
 		}
 
 

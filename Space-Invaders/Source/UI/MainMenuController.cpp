@@ -47,7 +47,7 @@ namespace UI
 			//background_image->setImageAlpha(background_alpha);
 		}
 
-		sf::Sprite MainMenuController::getBackgroundSprite()
+		const sf::Sprite& MainMenuController::getBackgroundSprite()
 		{
 			return background_image->getImageSprite();
 		}

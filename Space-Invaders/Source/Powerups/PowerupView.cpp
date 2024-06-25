@@ -60,6 +60,11 @@ namespace Powerup
 		powerup_image->render();
 	}
 
+	const sf::Sprite& PowerupView::getPowerupSprite()
+	{
+		powerup_image->getImageSprite();
+	}
+
 	PowerupView::~PowerupView() 
 	{ 
 		destroy();
