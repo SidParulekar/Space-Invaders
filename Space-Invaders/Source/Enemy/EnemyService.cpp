@@ -5,6 +5,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\UFOController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
 
 namespace Enemy
 {
@@ -81,7 +82,7 @@ namespace Enemy
 			return new Controllers::ZapperController(enemy_type); 
 
 			/*case::Enemy::EnemyType::THUNDER_SNAKE:
-				return new ThunderSnakeController(Enemy::EnemyType::THUNDER_SNAKE);*/
+				return new Controllers::ThunderSnakeController(enemy_type);*/
 
 		case::Enemy::EnemyType::SUBZERO:
 			return new Controllers::SubZeroController(enemy_type);
@@ -103,7 +104,7 @@ namespace Enemy
 		destroy();
 		spawn_timer = 0.0f;
 	}
-	
+
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
 	{
 		dynamic_cast<ICollider*>(enemy_controller)->disableCollision();
@@ -113,9 +114,20 @@ namespace Enemy
 		//delete enemy_controller;
 	}
 
+	void EnemyService::destroyFlaggedEnemies()
+	{
+		for (int i = 0; i < flagged_enemy_list.size(); i++)
+		{
+			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(flagged_enemy_list[i]));
+			delete (flagged_enemy_list[i]);
+		}
+		flagged_enemy_list.clear();
+	}
+	
 	Enemy::EnemyService::~EnemyService()
 	{
 		destroy();
+		spawn_timer = 0.0f;
 	}
 
 	void EnemyService::destroy()

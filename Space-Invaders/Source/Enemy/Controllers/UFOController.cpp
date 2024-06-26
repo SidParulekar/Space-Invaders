@@ -23,9 +23,12 @@ namespace Enemy
 			EnemyController::initialize();
 		}
 
+
 		void UFOController::onCollision(ICollider* other_collider)
 		{
 			EnemyController::onCollision(other_collider);
+			//If UFO has collided with a bullet fired by player
+
 			BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 
 			if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
@@ -58,7 +61,7 @@ namespace Enemy
 			sf::Vector2f currentPosition = getEnemyPosition();
 			currentPosition.x -= enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-			// If enemy has reached left most position then start moving down
+			// If enemy has reached left most position then start moving right
 			if (currentPosition.x <= enemy_model->left_most_position.x)
 			{
 				enemy_model->setMovementDirection(MovementDirection::RIGHT); 
@@ -75,7 +78,7 @@ namespace Enemy
 			sf::Vector2f currentPosition = getEnemyPosition();
 			currentPosition.x += enemy_model->enemy_movement_speed * ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
-			// If enemy has reached right most position then start moving down
+			// If enemy has reached right most position then start moving left
 			if (currentPosition.x >= enemy_model->right_most_position.x)
 			{
 				enemy_model->setMovementDirection(MovementDirection::LEFT);

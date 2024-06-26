@@ -7,6 +7,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
+
 namespace Enemy
 {
 	using namespace Global;
@@ -71,8 +72,32 @@ namespace Enemy
 		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
 			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
 		{
-			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			destroy();
 		}
+	}
+
+	void EnemyController::onCollision(ICollider* other_collider)
+	{
+		//If enemy has collided with a bullet fired by player
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+		{
+			destroy();
+			return;
+		}
+
+		//If enemy has collided with a player
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+		}
+	}
+
+	const sf::Sprite& EnemyController::getColliderSprite()
+	{
+		return enemy_view->getEnemySprite();
 	}
 
 	sf::Vector2f EnemyController::getEnemyPosition()
@@ -121,6 +146,11 @@ namespace Enemy
 	void EnemyController::render()
 	{
 		enemy_view->render();
+	}
+
+	void EnemyController::destroy()
+	{
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 
 	EnemyController::~EnemyController()

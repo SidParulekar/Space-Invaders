@@ -14,6 +14,7 @@ namespace Gameplay
 	void GameplayView::initialize()
 	{
 		game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
+		background_sprite = ServiceLocator::getInstance()->getUIService()->getMainMenuController()->getBackgroundSprite(); 
 		//initializeBackgroundImage();
 	}
 
@@ -40,7 +41,6 @@ namespace Gameplay
 
 	void GameplayView::render()
 	{
-		background_sprite = ServiceLocator::getInstance()->getUIService()->getMainMenuController()->getBackgroundSprite();
 		game_window->draw(background_sprite);
 	}
 

@@ -15,6 +15,7 @@ namespace Powerup
 		std::vector<Collectible::ICollectible*> flagged_powerup_list;
 
 		PowerupController* createPowerup(PowerupType powerup_type);
+
 		void destroyFlaggedPowerup();
 		void destroy();
 
