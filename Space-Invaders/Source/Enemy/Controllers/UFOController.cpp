@@ -9,7 +9,6 @@ namespace Enemy
 {
 	using namespace Global;
 	using namespace Entity;
-	using namespace Bullet;
 
 	namespace Controllers
 	{
@@ -24,11 +23,12 @@ namespace Enemy
 			EnemyController::initialize();
 		}
 
-		void UFOController::onCollision(ICollider* other_collider) 
+
+		void UFOController::onCollision(ICollider* other_collider)
 		{
 			EnemyController::onCollision(other_collider);
-
 			//If UFO has collided with a bullet fired by player
+
 			BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 
 			if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)

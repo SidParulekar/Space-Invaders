@@ -3,6 +3,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
 namespace Enemy
 {
@@ -104,7 +105,8 @@ namespace Enemy
 		{
 			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
 				enemy_model->getEnemyPosition() + enemy_model->bullet_position_offset,
-				Bullet::MovementDirection::DOWN, EntityType::ENEMY);
+				Bullet::MovementDirection::DOWN, Entity::EntityType::ENEMY); 
+
 		}
 
 

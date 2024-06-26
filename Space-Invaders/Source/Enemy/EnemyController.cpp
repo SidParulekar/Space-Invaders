@@ -3,10 +3,9 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyView.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
 
 namespace Enemy
@@ -114,6 +113,34 @@ namespace Enemy
 	EnemyState EnemyController::getEnemyState()
 	{
 		return enemy_model->getEnemyState();
+	}
+
+	const sf::Sprite& EnemyController::getColliderSprite()
+	{
+		return enemy_view->getEnemySprite();
+	}
+
+	void EnemyController::onCollision(ICollider* other_collider)
+	{
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+		{
+			destroy();
+			return;	
+		}
+
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+			
+		}
+	}
+
+	void EnemyController::destroy()
+	{
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 
 	void EnemyController::render()

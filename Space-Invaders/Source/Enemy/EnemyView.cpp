@@ -57,7 +57,8 @@ namespace Enemy
 		enemy_image->render();
 	}
 
-	sf::Sprite EnemyView::getEnemySprite()
+
+	const sf::Sprite& EnemyView::getEnemySprite()
 	{
 		return enemy_image->getImageSprite();
 	}

@@ -46,6 +46,16 @@ namespace Enemy
 		}
 	}
 
+	void EnemyService::destroyFlaggedEnemies()
+	{
+		for (int i = 0; i < flagged_enemy_list.size(); i++)
+		{
+			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(flagged_enemy_list[i]));
+			delete (flagged_enemy_list[i]);
+		}
+		flagged_enemy_list.clear();
+	}
+
 	EnemyController* EnemyService::spawnEnemy()
 	{
 		EnemyController* enemy_controller = createEnemy(getRandomEnemyType());
@@ -99,7 +109,9 @@ namespace Enemy
 	{
 		dynamic_cast<ICollider*>(enemy_controller)->disableCollision();
 		flagged_enemy_list.push_back(enemy_controller);
+		//ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_controller));
 		enemy_list.erase(std::remove(enemy_list.begin(), enemy_list.end(), enemy_controller), enemy_list.end());
+		//delete enemy_controller;
 	}
 
 	void EnemyService::destroyFlaggedEnemies()

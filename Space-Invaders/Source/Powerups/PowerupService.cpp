@@ -56,7 +56,17 @@ namespace Powerup
 	{
 		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->update(); //loop and update
 
-		destroyFlaggedPowerup(); 
+		destroyFlaggedPowerup();
+	}
+
+	void PowerupService::destroyFlaggedPowerup()
+	{
+		for (Collectible::ICollectible* powerup : flagged_powerup_list)
+			delete (powerup);
+
+		flagged_powerup_list.clear();
+
+		
 	}
 
 	void PowerupService::render()
@@ -70,14 +80,7 @@ namespace Powerup
 
 		flagged_powerup_list.push_back(powerup_controller);
 		powerup_list.erase(std::remove(powerup_list.begin(), powerup_list.end(), powerup_controller), powerup_list.end());
-	}
 
-	void PowerupService::destroyFlaggedPowerup()
-	{
-		for (Collectible::ICollectible* powerup : flagged_powerup_list)
-			delete (powerup);
-
-		flagged_powerup_list.clear();
 	}
 
 	PowerupService::~PowerupService()

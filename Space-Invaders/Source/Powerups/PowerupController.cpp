@@ -53,6 +53,29 @@ namespace Powerup
 		powerup_view->render();
 	}
 
+
+	const sf::Sprite& PowerupController::getColliderSprite()
+	{
+		return powerup_view->getPowerupSprite();
+	}
+
+	void PowerupController::onCollision(ICollider* other_collider)
+	{
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+
+		if (player_controller)
+		{
+			onCollected();
+			ServiceLocator::getInstance()->getPowerupService()->destroyPowerup(this);
+		}
+	}
+
+	void PowerupController::onCollected()
+	{
+		//applyPowerup();
+	}
+
+
 	sf::Vector2f PowerupController::getCollectiblePosition()
 	{
 		return powerup_model->getPowerupPosition();

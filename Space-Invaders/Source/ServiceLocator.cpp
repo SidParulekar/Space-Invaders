@@ -49,7 +49,7 @@ namespace Global
 		sound_service = new SoundService();
 		bullet_service = new BulletService();
 		powerup_service = new PowerupService();
-		collision_service = new CollisionService();
+		collision_service = new CollisionService(); 
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()

@@ -22,8 +22,8 @@ namespace Enemy
 
 		void updateSpawnTimer();
 		void processEnemySpawn();
+		void destroyFlaggedEnemies();
 
-		void destroyFlaggedEnemies(); 
 		void destroy();
 
 	public:
