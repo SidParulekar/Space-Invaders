@@ -15,10 +15,10 @@ namespace Powerup
 		{
 		}
 
-		void RapidFireController::applyPowerup()
+		/*void RapidFireController::applyPowerup()
 		{
 			ServiceLocator::getInstance()->getPlayerService()->enableRapidFire();
-		}
+		}*/
 
 		RapidFireController::~RapidFireController()
 		{

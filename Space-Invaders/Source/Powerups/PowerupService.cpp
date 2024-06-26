@@ -64,20 +64,20 @@ namespace Powerup
 		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->render(); //loop and render
 	}
 
-	void PowerupService::destroyFlaggedPowerup()
-	{
-		for (Collectible::ICollectible* powerup : flagged_powerup_list)
-			delete (powerup);
-
-		flagged_powerup_list.clear();
-	}
-
 	void PowerupService::destroyPowerup(PowerupController* powerup_controller) //destroy specific powerup
 	{
 		ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(powerup_controller));
 
 		flagged_powerup_list.push_back(powerup_controller);
 		powerup_list.erase(std::remove(powerup_list.begin(), powerup_list.end(), powerup_controller), powerup_list.end());
+	}
+
+	void PowerupService::destroyFlaggedPowerup()
+	{
+		for (Collectible::ICollectible* powerup : flagged_powerup_list)
+			delete (powerup);
+
+		flagged_powerup_list.clear();
 	}
 
 	PowerupService::~PowerupService()

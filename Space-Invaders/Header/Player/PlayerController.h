@@ -1,12 +1,12 @@
 #pragma once
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerModel.h"
 #include <SFML/Graphics.hpp>
 
 namespace Player
 {
 	enum class PlayerState;
 	class PlayerView;
+	class PlayerModel;
 
 	class PlayerController: public Collision::ICollider
 	{
@@ -68,9 +68,6 @@ namespace Player
 
 		const sf::Sprite& getColliderSprite() override;
 		void onCollision(ICollider* other_collider) override;
-
-		void decreasePlayerLives();
-		inline void increaseEnemiesKilled(int val) { PlayerModel::enemies_killed += val; }
 
 
 	};

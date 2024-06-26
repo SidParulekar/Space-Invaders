@@ -89,6 +89,12 @@ namespace Enemy
 		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->render();
 	}
 
+	void EnemyService::reset()
+	{
+		destroy();
+		spawn_timer = 0.0f;
+	}
+
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
 	{
 		dynamic_cast<ICollider*>(enemy_controller)->disableCollision();

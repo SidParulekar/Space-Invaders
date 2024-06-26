@@ -82,7 +82,7 @@ namespace Powerup
 
 	void PowerupController::onCollected()
 	{
-		applyPowerup();
+		//applyPowerup();
 	}
 
 	PowerupController::~PowerupController()

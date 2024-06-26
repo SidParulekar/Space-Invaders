@@ -15,7 +15,7 @@ namespace Powerup
         PowerupView* powerup_view;
         PowerupModel* powerup_model;
 
-        virtual void applyPowerup() = 0;
+        //virtual void applyPowerup() = 0;
 
         void updatePowerupPosition();
         void handleOutOfBounds();

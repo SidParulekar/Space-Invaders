@@ -29,7 +29,7 @@ namespace Enemy
 		void processBulletFire();
 		virtual void fireBullet() = 0;
 
-		void destroy();
+		virtual void destroy();
 
 	public:
 		EnemyController(EnemyType type);

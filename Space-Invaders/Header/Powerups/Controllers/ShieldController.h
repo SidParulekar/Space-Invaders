@@ -15,7 +15,7 @@ namespace Powerup
 			virtual ~ShieldController();
 
 			void onCollected() override;
-			void applyPowerup() override;
+			//void applyPowerup() override;
 
 		};
 	}

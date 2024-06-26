@@ -15,10 +15,10 @@ namespace Powerup
 		{
 		}
 
-		void TripleLaserController::applyPowerup()
+		/*void TripleLaserController::applyPowerup()
 		{
 			ServiceLocator::getInstance()->getPlayerService()->enableTripleLaser();
-		}
+		}*/
 
 		TripleLaserController::~TripleLaserController()
 		{
