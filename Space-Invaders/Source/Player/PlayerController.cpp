@@ -174,7 +174,7 @@ namespace Player
 		player_model->reset();
 	}
 
-	const sf::Sprite PlayerController::getColliderSprite()
+	const sf::Sprite& PlayerController::getColliderSprite()
 	{
 		return player_view->getPlayerSprite();
 	}

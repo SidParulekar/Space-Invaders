@@ -75,7 +75,7 @@ namespace UI
             }
         }
 
-        const sf::Sprite ImageView::getImageSprite()
+        const sf::Sprite& ImageView::getImageSprite()
         {
             return image_sprite;
         }

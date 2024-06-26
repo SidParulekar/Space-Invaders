@@ -27,6 +27,8 @@ namespace Powerup
 		PowerupController* powerup_controller = createPowerup(powerup_type);
 
 		powerup_controller->initialize(position);
+
+		ServiceLocator::getInstance()->getCollisionService()->addCollider(dynamic_cast<ICollider*>(powerup_controller));
 		powerup_list.push_back(powerup_controller);
 		return powerup_controller;
 	}
@@ -52,6 +54,16 @@ namespace Powerup
 	void PowerupService::update()
 	{
 		for (int i = 0; i < powerup_list.size(); i++) powerup_list[i]->update(); //loop and update
+
+		destroyFlaggedPowerup();
+	}
+
+	void PowerupService::destroyFlaggedPowerup()
+	{
+		for (Collectible::ICollectible* powerup : flagged_powerup_list)
+			delete (powerup);
+
+		flagged_powerup_list.clear();
 	}
 
 	void PowerupService::render()
@@ -61,8 +73,10 @@ namespace Powerup
 
 	void PowerupService::destroyPowerup(PowerupController* powerup_controller) //destroy specific powerup
 	{
+		ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(powerup_controller));
+
+		flagged_powerup_list.push_back(powerup_controller);
 		powerup_list.erase(std::remove(powerup_list.begin(), powerup_list.end(), powerup_controller), powerup_list.end());
-		delete(powerup_controller);
 	}
 
 	PowerupService::~PowerupService()

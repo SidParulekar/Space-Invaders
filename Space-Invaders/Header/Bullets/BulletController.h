@@ -39,7 +39,7 @@ namespace Bullet
 		BulletType getBulletType();
 		Entity::EntityType getOwnerEntityType();
 
-		const sf::Sprite getColliderSprite() override;
+		const sf::Sprite& getColliderSprite() override;
 		void onCollision(ICollider* other_collider) override;
 
 

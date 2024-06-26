@@ -3,6 +3,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupView.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
 
 namespace Powerup
 {
@@ -52,8 +53,25 @@ namespace Powerup
 		powerup_view->render();
 	}
 
+	const sf::Sprite& PowerupController::getColliderSprite()
+	{
+		return powerup_view->getPowerupSprite();
+	}
+
+	void PowerupController::onCollision(ICollider* other_collider)
+	{
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+
+		if (player_controller)
+		{
+			onCollected();
+			ServiceLocator::getInstance()->getPowerupService()->destroyPowerup(this);
+		}
+	}
+
 	void PowerupController::onCollected()
 	{
+		//applyPowerup();
 	}
 
 	sf::Vector2f PowerupController::getCollectiblePosition()

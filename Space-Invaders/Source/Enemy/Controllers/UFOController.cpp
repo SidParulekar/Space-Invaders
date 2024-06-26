@@ -2,10 +2,13 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyModel.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Entity;
 
 	namespace Controllers
 	{
@@ -18,6 +21,18 @@ namespace Enemy
 		void UFOController::initialize()
 		{
 			EnemyController::initialize();
+		}
+
+		void UFOController::onCollision(ICollider* other_collider)
+		{
+			EnemyController::onCollision(other_collider);
+			BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+
+			if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+			{
+				ServiceLocator::getInstance()->getPowerupService()->spawnPowerup(getRandomPowerupType(), enemy_model->getEnemyPosition());
+				return;
+			}
 		}
 
 		void UFOController::move()

@@ -78,6 +78,10 @@ namespace Bullet
 		for (int i = 0; i < bullet_list.size(); i++) bullet_list[i]->render();
 	}
 
+	void BulletService::reset()
+	{
+	}
+
 	BulletService::~BulletService()
 	{
 		destroy();

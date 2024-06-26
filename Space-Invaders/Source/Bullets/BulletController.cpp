@@ -95,7 +95,7 @@ namespace Bullet
 		return bullet_model->getOwnerEntityType();
 	}
 
-	const sf::Sprite BulletController::getColliderSprite()
+	const sf::Sprite& BulletController::getColliderSprite()
 	{
 		return bullet_view->getBulletSprite();
 	}

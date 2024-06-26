@@ -49,7 +49,7 @@ namespace UI
 			void render() override;
 			void show() override;
 
-			sf::Sprite getBackgroundSprite();
+			const sf::Sprite& getBackgroundSprite();
 		};
 	}
 }
