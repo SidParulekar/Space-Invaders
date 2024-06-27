@@ -3,6 +3,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\SubZeroController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\ZapperController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\UFOController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\ThunderSnakeController.h" 
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
@@ -46,15 +47,6 @@ namespace Enemy
 		}
 	}
 
-	/*void EnemyService::destroyFlaggedEnemies()
-	{
-		for (int i = 0; i < flagged_enemy_list.size(); i++)
-		{
-			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(flagged_enemy_list[i]));
-			delete (flagged_enemy_list[i]);
-		}
-		flagged_enemy_list.clear();
-	}*/
 
 	EnemyController* EnemyService::spawnEnemy()
 	{
@@ -70,7 +62,7 @@ namespace Enemy
 
 	EnemyType EnemyService::getRandomEnemyType()
 	{
-		int randomType = std::rand() % 3;
+		int randomType = std::rand() % 4;
 		return static_cast<Enemy::EnemyType>(randomType);
 	}
 
@@ -81,8 +73,8 @@ namespace Enemy
 		case::Enemy::EnemyType::ZAPPER:
 			return new Controllers::ZapperController(enemy_type); 
 
-			/*case::Enemy::EnemyType::THUNDER_SNAKE:
-				return new Controllers::ThunderSnakeController(enemy_type);*/
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			return new Controllers::ThunderSnakeController(enemy_type);
 
 		case::Enemy::EnemyType::SUBZERO:
 			return new Controllers::SubZeroController(enemy_type);
@@ -99,10 +91,9 @@ namespace Enemy
 		for (int i = 0; i < enemy_list.size(); i++) enemy_list[i]->render();
 	}
 
-	void EnemyService::reset()
+	int EnemyService::getCurrentEnemies()
 	{
-		destroy();
-		spawn_timer = 0.0f;
+		return enemy_list.size();
 	}
 
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
@@ -139,5 +130,12 @@ namespace Enemy
 		}
 		enemy_list.clear();
 	}
+
+	void EnemyService::reset() 
+	{
+		destroy();
+		spawn_timer = 0.0f;
+	}
+
 }
 

@@ -17,6 +17,8 @@ namespace Powerup
 
 		void OutscalBombController::applyPowerup()
 		{
+			current_enemies = ServiceLocator::getInstance()->getEnemyService()->getCurrentEnemies();
+			ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(current_enemies);
 			ServiceLocator::getInstance()->getEnemyService()->reset();
 		}
 

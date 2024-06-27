@@ -46,8 +46,6 @@ namespace Player
 		void disableRapidFire();
 		void disableTripleLaser();
 
-		//void fireBullet();
-
 	public:
 
 		PlayerController();

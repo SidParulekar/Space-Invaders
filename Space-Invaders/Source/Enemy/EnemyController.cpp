@@ -5,6 +5,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
 
@@ -12,6 +13,7 @@ namespace Enemy
 {
 	using namespace Global;
 	using namespace Entity;
+	using namespace Element::Bunker;
 
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -114,12 +116,22 @@ namespace Enemy
 			return;
 			
 		}
+
+		//If SUBZERO enemy has collided with bunker
+		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
+		if (bunker_controller && getEnemyType() == EnemyType::SUBZERO) 
+		{
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			return;
+		}
+			
 	}
 
 	void EnemyController::destroy()
 	{
-		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1); 
-		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 
+		
 	}
 
 	void EnemyController::render()

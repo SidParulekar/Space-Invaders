@@ -29,7 +29,7 @@ namespace Player
 
 	void PlayerController::update()
 	{
-		switch (player_model->getPlayerState()) 
+		switch (getPlayerState()) 
 		{
 		case::Player::PlayerState::ALIVE: 
 			processPlayerInput(); 
@@ -43,6 +43,11 @@ namespace Player
 		updatePowerupDuration(); 
 		updateFireDuration(); 
 		player_view->update();
+	}
+
+	PlayerState PlayerController::getPlayerState()
+	{
+		return player_model->getPlayerState();
 	}
 
 
@@ -156,13 +161,14 @@ namespace Player
 	{
 		if (player_model->elapsed_freeze_duration > 0)
 		{
-			player_model->elapsed_fire_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+			player_model->elapsed_freeze_duration -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 
 			if (player_model->elapsed_freeze_duration <= 0)
+			{
 				player_model->setPlayerState(PlayerState::ALIVE);
+			}
 		}
 	}
-
 
 	sf::Vector2f PlayerController::getPlayerPosition()
 	{
@@ -187,7 +193,7 @@ namespace Player
 		if (processBulletCollision(other_collider))
 			return;
 
-		processEnemyCollision(other_collider);
+		processEnemyCollision(other_collider); 
 	}
 
 	bool PlayerController::processBulletCollision(ICollider* other_collider)
@@ -202,13 +208,18 @@ namespace Player
 		{
 			if (bullet_controller->getBulletType() == BulletType::FROST_BULLET)
 			{
-				player_model->setPlayerState(PlayerState::FROZEN);
-				player_model->elapsed_freeze_duration = player_model->freeze_duration;
+				freezePlayer();
 			}
 			else decreasePlayerLives();
 			return true;
 		}
 
+	}
+
+	void PlayerController::freezePlayer()
+	{
+		player_model->setPlayerState(PlayerState::FROZEN);
+		player_model->elapsed_freeze_duration = player_model->freeze_duration;
 	}
 
 	bool PlayerController::processEnemyCollision(ICollider* other_collider)

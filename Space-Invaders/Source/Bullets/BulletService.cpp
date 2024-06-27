@@ -80,6 +80,7 @@ namespace Bullet
 
 	void BulletService::reset()
 	{
+		destroy();
 	}
 
 	BulletService::~BulletService()

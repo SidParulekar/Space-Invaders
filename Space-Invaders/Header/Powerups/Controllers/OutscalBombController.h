@@ -11,6 +11,8 @@ namespace Powerup
 
 		public:
 
+			int current_enemies;
+
 			OutscalBombController(PowerupType type);
 			virtual ~OutscalBombController();
 
