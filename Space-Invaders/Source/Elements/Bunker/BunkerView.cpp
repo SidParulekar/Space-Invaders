@@ -47,6 +47,11 @@ namespace Element
 			bunker_image->render(); 
 		}
 
+		const sf::Sprite& BunkerView::getBunkerSprite()
+		{
+			return bunker_image->getImageSprite();
+		}
+
 		BunkerView::~BunkerView()
 		{
 			delete bunker_image; 

@@ -42,6 +42,9 @@ namespace Enemy
 			
 		case::Enemy::EnemyType::UFO:
 			return Config::ufo_texture_path;
+
+		case::Enemy::EnemyType::THUNDER_SNAKE:
+			return Config::thunder_snake_texture_path;
 			
 		}
 	}
@@ -55,6 +58,12 @@ namespace Enemy
 	void EnemyView::render()
 	{
 		enemy_image->render();
+	}
+
+
+	const sf::Sprite& EnemyView::getEnemySprite()
+	{
+		return enemy_image->getImageSprite();
 	}
 
 	EnemyView::~EnemyView()

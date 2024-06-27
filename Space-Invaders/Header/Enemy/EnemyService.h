@@ -12,6 +12,7 @@ namespace Enemy
 		const float spawn_interval = 3.0f;
 
 		std::vector<EnemyController*> enemy_list;
+		std::vector<EnemyController*> flagged_enemy_list;
 
 		float spawn_timer;
 
@@ -21,6 +22,8 @@ namespace Enemy
 
 		void updateSpawnTimer();
 		void processEnemySpawn();
+		void destroyFlaggedEnemies();
+
 		void destroy();
 
 	public:
@@ -32,9 +35,14 @@ namespace Enemy
 		void update();
 		void render();
 
+		void reset();
+
+		int getCurrentEnemies();
+
 		EnemyController* spawnEnemy();
 
 		void destroyEnemy(EnemyController* enemy_controller);
+
 		
 	};
 }

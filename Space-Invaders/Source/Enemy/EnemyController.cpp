@@ -3,10 +3,17 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyView.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
+
 
 namespace Enemy
 {
 	using namespace Global;
+	using namespace Entity;
+	using namespace Element::Bunker;
 
 	EnemyController::EnemyController(EnemyType type)
 	{
@@ -67,8 +74,13 @@ namespace Enemy
 		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
 			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
 		{
-			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			destroy();
 		}
+	}
+
+	const sf::Sprite& EnemyController::getColliderSprite()
+	{
+		return enemy_view->getEnemySprite();
 	}
 
 	sf::Vector2f EnemyController::getEnemyPosition()
@@ -84,6 +96,42 @@ namespace Enemy
 	EnemyState EnemyController::getEnemyState()
 	{
 		return enemy_model->getEnemyState();
+	}
+
+	void EnemyController::onCollision(ICollider* other_collider)
+	{
+		//If enemy has collided with a bullet fired by player
+		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
+		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
+		{
+			destroy();
+			return;	
+		}
+
+		//If enemy has collided with a player
+		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
+		if (player_controller)
+		{
+			destroy();
+			return;
+			
+		}
+
+		//If SUBZERO enemy has collided with bunker
+		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
+		if (bunker_controller && getEnemyType() == EnemyType::SUBZERO) 
+		{
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			return;
+		}
+			
+	}
+
+	void EnemyController::destroy()
+	{
+		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 
+		
 	}
 
 	void EnemyController::render()

@@ -11,10 +11,13 @@ namespace Powerup
 
 		public:
 
+			int current_enemies;
+
 			OutscalBombController(PowerupType type);
 			virtual ~OutscalBombController();
 
-			void onCollected() override;
+			//void onCollected() override;
+			void applyPowerup() override;
 
 		};
 	}

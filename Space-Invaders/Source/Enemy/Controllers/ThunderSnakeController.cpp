@@ -1,4 +1,4 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\ZapperController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\Controllers\ThunderSnakeController.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyModel.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Enemy\EnemyConfig.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
@@ -13,17 +13,17 @@ namespace Enemy
 	namespace Controllers
 	{
 
-		ZapperController::ZapperController(EnemyType type) : EnemyController(type) 
-		{ 
+		ThunderSnakeController::ThunderSnakeController(EnemyType type) : EnemyController(type)
+		{
 
 		}
 
-		void ZapperController::initialize()
+		void ThunderSnakeController::initialize()
 		{
 			EnemyController::initialize();
 		}
 
-		void ZapperController::move()
+		void ThunderSnakeController::move()
 		{
 			switch (enemy_model->getMovementDirection())
 			{
@@ -44,7 +44,7 @@ namespace Enemy
 			}
 		}
 
-		void ZapperController::moveLeft()
+		void ThunderSnakeController::moveLeft()
 		{
 			// Enemy moves left
 			sf::Vector2f currentPosition = getEnemyPosition();
@@ -61,7 +61,7 @@ namespace Enemy
 			else enemy_model->setEnemyPosition(currentPosition);
 		}
 
-		void ZapperController::moveRight()
+		void ThunderSnakeController::moveRight()
 		{
 			// Enemy moves right
 			sf::Vector2f currentPosition = getEnemyPosition();
@@ -78,7 +78,7 @@ namespace Enemy
 			else enemy_model->setEnemyPosition(currentPosition);
 		}
 
-		void ZapperController::moveDown()
+		void ThunderSnakeController::moveDown()
 		{
 			// Enemy moves down
 			sf::Vector2f currentPosition = getEnemyPosition();
@@ -101,22 +101,19 @@ namespace Enemy
 			else enemy_model->setEnemyPosition(currentPosition);
 		}
 
-		void ZapperController::fireBullet()
+		void ThunderSnakeController::fireBullet()
 		{
-			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::LASER_BULLET,
+			ServiceLocator::getInstance()->getBulletService()->spawnBullet(BulletType::TORPEDO,
 				enemy_model->getEnemyPosition() + enemy_model->bullet_position_offset,
-				Bullet::MovementDirection::DOWN, Entity::EntityType::ENEMY); 
+				Bullet::MovementDirection::DOWN, Entity::EntityType::ENEMY);
 
 		}
 
 
-		ZapperController::~ZapperController()
+		ThunderSnakeController::~ThunderSnakeController() 
 		{
 		}
 
-		
+
 	}
 }
-
-
-

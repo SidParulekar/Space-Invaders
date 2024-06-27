@@ -1,8 +1,11 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Gameplay\GameplayService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Gameplay\GameplayController.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Gameplay
 {
+	using namespace Global;
+
 	GameplayService::GameplayService()
 	{
 		gameplay_controller = new GameplayController();
@@ -21,6 +24,14 @@ namespace Gameplay
 	void GameplayService::render()
 	{
 		gameplay_controller->render(); 
+	}
+
+	void GameplayService::restart()
+	{
+		ServiceLocator::getInstance()->getPlayerService()->reset();
+		ServiceLocator::getInstance()->getEnemyService()->reset();
+		ServiceLocator::getInstance()->getBulletService()->reset();
+		ServiceLocator::getInstance()->getElementService()->reset();
 	}
 
 	GameplayService::~GameplayService()

@@ -4,9 +4,10 @@
 
 namespace Bullet
 {
-	BulletModel::BulletModel(BulletType type)
+	BulletModel::BulletModel(BulletType type, Entity::EntityType owner_type)
 	{
 		bullet_type = type;
+		owner_entity = owner_type;
 	}
 
 	void BulletModel::initialize(sf::Vector2f position, MovementDirection direction)
@@ -48,6 +49,11 @@ namespace Bullet
 	void BulletModel::setMovementSpeed(float speed)
 	{
 		bullet_speed = speed;
+	}
+
+	Entity::EntityType BulletModel::getOwnerEntityType()
+	{
+		return owner_entity;
 	}
 
 	float BulletModel::getMovementSpeed()
