@@ -38,6 +38,14 @@ namespace Enemy
 			}
 		}
 
+		Powerup::PowerupType UFOController::getRandomPowerupType()
+		{
+			std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+			int random_value = std::rand() % (static_cast<int>(Powerup::PowerupType::OUTSCAL_BOMB) + 1);
+			return static_cast<Powerup::PowerupType>(random_value);
+		}
+
 		void UFOController::move()
 		{
 			switch (enemy_model->getMovementDirection())
@@ -91,14 +99,6 @@ namespace Enemy
 
 		void UFOController::fireBullet()
 		{
-		}
-
-		Powerup::PowerupType UFOController::getRandomPowerupType()
-		{
-			std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
-			int random_value = std::rand() % (static_cast<int>(Powerup::PowerupType::OUTSCAL_BOMB) + 1);
-			return static_cast<Powerup::PowerupType>(random_value);
 		}
 
 		UFOController::~UFOController()

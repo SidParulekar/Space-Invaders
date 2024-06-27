@@ -72,7 +72,7 @@ namespace Powerup
 
 	void PowerupController::onCollected()
 	{
-		//applyPowerup();
+		this->applyPowerup();
 	}
 
 
@@ -84,28 +84,6 @@ namespace Powerup
 	PowerupType PowerupController::getPowerupType()
 	{
 		return powerup_model->getPowerupType();
-	}
-
-	const sf::Sprite& PowerupController::getColliderSprite()
-	{
-		return powerup_view->getPowerupSprite();
-	}
-
-	void PowerupController::onCollision(ICollider* other_collider)
-	{
-		//If powerup has collided with player
-		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
-
-		if (player_controller)
-		{
-			onCollected();
-			ServiceLocator::getInstance()->getPowerupService()->destroyPowerup(this);
-		}
-	}
-
-	void PowerupController::onCollected()
-	{
-		//applyPowerup();
 	}
 
 	PowerupController::~PowerupController()

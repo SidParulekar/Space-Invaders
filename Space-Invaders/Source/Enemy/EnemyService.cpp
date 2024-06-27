@@ -46,7 +46,7 @@ namespace Enemy
 		}
 	}
 
-	void EnemyService::destroyFlaggedEnemies()
+	/*void EnemyService::destroyFlaggedEnemies()
 	{
 		for (int i = 0; i < flagged_enemy_list.size(); i++)
 		{
@@ -54,7 +54,7 @@ namespace Enemy
 			delete (flagged_enemy_list[i]);
 		}
 		flagged_enemy_list.clear();
-	}
+	}*/
 
 	EnemyController* EnemyService::spawnEnemy()
 	{

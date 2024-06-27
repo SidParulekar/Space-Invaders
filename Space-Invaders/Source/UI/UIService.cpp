@@ -11,12 +11,14 @@ namespace UI
 	UIService::UIService()
 	{
 		main_menu_controller = nullptr;
+		gameplay_ui_controller = nullptr;
 		createControllers();
 	}
 
 	void UIService::createControllers()
 	{
-		main_menu_controller = new MainMenuController(); 
+		main_menu_controller = new MainMenuController();
+		gameplay_ui_controller = new GameplayUIController();
 	}
 	
 	void UIService::initialize()
@@ -28,6 +30,7 @@ namespace UI
 	void UIService::initializeControllers()
 	{
 		main_menu_controller->initialize();
+		gameplay_ui_controller->initialize();
 	}
 
 	void UIService::update()
@@ -67,7 +70,10 @@ namespace UI
 		switch (GameService::getGameState()) 
 		{
 		case GameState::MAIN_MENU: 
-			return main_menu_controller;  
+			return main_menu_controller;
+
+		case GameState::GAMEPLAY:
+			return gameplay_ui_controller; 
 
 		default:
 			return nullptr;

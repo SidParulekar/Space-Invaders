@@ -14,8 +14,8 @@ namespace Powerup
 			TripleLaserController(PowerupType type);
 			virtual ~TripleLaserController();
 
-			void onCollected() override;
-			//void applyPowerup() override;
+			//void onCollected() override;
+			void applyPowerup() override;
 
 		};
 	}

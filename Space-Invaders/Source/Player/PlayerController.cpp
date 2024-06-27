@@ -205,7 +205,7 @@ namespace Player
 				player_model->setPlayerState(PlayerState::FROZEN);
 				player_model->elapsed_freeze_duration = player_model->freeze_duration;
 			}
-			else ServiceLocator::getInstance()->getGameplayService()->restart();
+			else decreasePlayerLives();
 			return true;
 		}
 
@@ -220,7 +220,7 @@ namespace Player
 		EnemyController* enemy_controller = dynamic_cast<EnemyController*>(other_collider);
 		if (enemy_controller)
 		{
-			ServiceLocator::getInstance()->getGameplayService()->restart();
+			decreasePlayerLives();
 			return true;
 		}
 		return false;
@@ -235,6 +235,18 @@ namespace Player
 			return true;
 		}
 		return false;
+	}
+
+	void PlayerController::decreasePlayerLives()
+	{
+		PlayerModel::player_lives -= 1;
+
+		if (PlayerModel::player_lives <= 0)
+		{
+			ServiceLocator::getInstance()->getGameplayService()->restart();
+		}
+
+		else reset(); 
 	}
 
 	void PlayerController::enableShield()

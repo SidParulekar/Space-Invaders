@@ -76,25 +76,6 @@ namespace Enemy
 		}
 	}
 
-	void EnemyController::onCollision(ICollider* other_collider)
-	{
-		//If enemy has collided with a bullet fired by player
-		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
-		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
-		{
-			destroy();
-			return;
-		}
-
-		//If enemy has collided with a player
-		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
-		if (player_controller)
-		{
-			destroy();
-			return;
-		}
-	}
-
 	const sf::Sprite& EnemyController::getColliderSprite()
 	{
 		return enemy_view->getEnemySprite();
@@ -115,13 +96,9 @@ namespace Enemy
 		return enemy_model->getEnemyState();
 	}
 
-	const sf::Sprite& EnemyController::getColliderSprite()
-	{
-		return enemy_view->getEnemySprite();
-	}
-
 	void EnemyController::onCollision(ICollider* other_collider)
 	{
+		//If enemy has collided with a bullet fired by player
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
 		{
@@ -129,6 +106,7 @@ namespace Enemy
 			return;	
 		}
 
+		//If enemy has collided with a player
 		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
 		if (player_controller)
 		{
@@ -140,17 +118,13 @@ namespace Enemy
 
 	void EnemyController::destroy()
 	{
+		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1); 
 		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 
 	void EnemyController::render()
 	{
 		enemy_view->render();
-	}
-
-	void EnemyController::destroy()
-	{
-		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 	}
 
 	EnemyController::~EnemyController()
