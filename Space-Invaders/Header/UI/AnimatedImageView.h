@@ -26,7 +26,7 @@ namespace UI
 			void updateAnimation();
 
 		protected:
-			const float default_animation_duration = 5.0f;
+			const float default_animation_duration = 6.0f;
 
 			AnimationType animation_type;
 			float animation_duration;

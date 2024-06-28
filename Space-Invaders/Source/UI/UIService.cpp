@@ -27,6 +27,7 @@ namespace UI
 	{
 		TextView::initializeTextView();
 		initializeControllers();
+		showScreen();
 	}
 
 	void UIService::initializeControllers()

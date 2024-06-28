@@ -93,8 +93,8 @@ namespace UI
 
         void AnimatedImageView::reset()
         {
-            animation_duration = default_animation_duration;
-            animation_type = AnimationType::FADE_IN;
+            //animation_duration = default_animation_duration;
+            //animation_type = AnimationType::FADE_IN;
             clock.restart();
             elapsed_duration = 0.0f;
         }
