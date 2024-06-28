@@ -67,6 +67,7 @@ namespace Player
 
 		if (event_service->pressedLeftMouseButton())
 		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FIRE_BULLET);
 			processBulletFire(); 
 		}
 	}

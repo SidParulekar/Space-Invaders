@@ -49,5 +49,8 @@ namespace Global
 
 	const sf::String Config::button_click_sound_path = "assets/sounds/button_click_sound.wav";
 
+	const sf::String Config::fire_bullet_sound_path = "assets/sounds/bullet_fire.ogg"; 
+
+
 	const sf::String explosion_texture_path = "assets/textures/explosion.png";
 }
