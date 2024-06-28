@@ -181,6 +181,7 @@
     <ClCompile Include="Source\UI\GameplayUIController.cpp" />
     <ClCompile Include="Source\UI\ImageView.cpp" />
     <ClCompile Include="Source\UI\MainMenuController.cpp" />
+    <ClCompile Include="Source\UI\SplashScreenUIController.cpp" />
     <ClCompile Include="Source\UI\TextView.cpp" />
     <ClCompile Include="Source\UI\UIService.cpp" />
     <ClCompile Include="Source\UI\UIView.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="Header\UI\ImageView.h" />
     <ClInclude Include="Header\UI\Interface\IUIController.h" />
     <ClInclude Include="Header\UI\MainMenu\MainMenuController.h" />
+    <ClInclude Include="Header\UI\SplashScreen\SplashScreenUIController.h" />
     <ClInclude Include="Header\UI\TextView.h" />
     <ClInclude Include="Header\UI\UIService.h" />
     <ClInclude Include="Header\UI\UIView.h" />

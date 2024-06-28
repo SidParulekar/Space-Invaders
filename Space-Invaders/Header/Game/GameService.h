@@ -10,7 +10,9 @@ namespace Game
 	{
 		BOOT,
 		MAIN_MENU,
-		GAMEPLAY
+		INSTRUCTIONS,
+		GAMEPLAY,
+		CREDITS
 	};
 
 	class GameService
@@ -21,7 +23,7 @@ namespace Game
 
 		static GameState current_state;
 
-		void showMainMenu();
+		//void showMainMenu();
 
 		void initialize();
 		void initializeVariables();

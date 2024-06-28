@@ -35,8 +35,7 @@ namespace UI
 		{
 			initializeBackgroundImage();
 			initializeButtons();
-			registerButtonCallback();
-			ServiceLocator::getInstance()->getSoundService()->playBackgroundMusic(); 
+			registerButtonCallback(); 
 		}
 
 		void MainMenuController::initializeBackgroundImage()
