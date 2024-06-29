@@ -74,7 +74,7 @@ namespace Enemy
 		if (enemyPosition.x < 0 || enemyPosition.x > windowSize.x ||
 			enemyPosition.y < 0 || enemyPosition.y > windowSize.y)
 		{
-			destroy();
+			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 
 		}
 	}
 
@@ -103,7 +103,7 @@ namespace Enemy
 		//If enemy has collided with a bullet fired by player
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
-		{
+		{ 
 			destroy();
 			return;	
 		}
@@ -111,10 +111,9 @@ namespace Enemy
 		//If enemy has collided with a player
 		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
 		if (player_controller)
-		{
+		{ 
 			destroy();
-			return;
-			
+			return;	
 		}
 
 		//If SUBZERO enemy has collided with bunker

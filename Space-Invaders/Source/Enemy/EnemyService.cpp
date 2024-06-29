@@ -113,11 +113,7 @@ namespace Enemy
 	{
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
-			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(enemy_list[i]->getEnemyPosition(),
-				Animation::AnimationType::EXPLOSION); 
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
-			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_list[i]));
-			delete (enemy_list[i]);
+			destroyEnemy(enemy_list[i]);
 		}
 		enemy_list.clear();
 
