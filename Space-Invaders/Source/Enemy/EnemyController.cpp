@@ -120,6 +120,10 @@ namespace Enemy
 		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
 		if (bunker_controller) 
 		{
+			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getEnemyPosition(), 
+				Animation::AnimationType::EXPLOSION);
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+
 			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 			return;
 		}
@@ -128,6 +132,10 @@ namespace Enemy
 
 	void EnemyController::destroy()
 	{
+		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getEnemyPosition(), 
+			Animation::AnimationType::EXPLOSION);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+
 		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
 		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 	
 	}
