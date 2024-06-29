@@ -67,6 +67,7 @@ namespace Player
 
 		if (event_service->pressedLeftMouseButton())
 		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::FIRE_BULLET);
 			processBulletFire(); 
 		}
 	}
@@ -251,6 +252,10 @@ namespace Player
 	void PlayerController::decreasePlayerLives()
 	{
 		PlayerModel::player_lives -= 1;
+
+		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getPlayerPosition(),
+			Animation::AnimationType::EXPLOSION);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
 
 		if (PlayerModel::player_lives <= 0)
 		{

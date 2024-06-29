@@ -28,7 +28,7 @@ namespace Game
 	{
 		service_locator->initialize();
 		initializeVariables();
-		showMainMenu(); 
+		//showMainMenu(); 
 	}
 
 	void GameService::initializeVariables() //Initialize game window pointer with new game window instance 
@@ -40,17 +40,17 @@ namespace Game
 	{
 
 		//Sets Game window with background color as specified in GraphicService
-		//game_window->clear(service_locator->getGraphicService()->getWindowColor());
+		game_window->clear(service_locator->getGraphicService()->getWindowColor()); 
 
 		service_locator->render();
 
 		game_window->display();
 	}
 
-	void GameService::showMainMenu()
+	/*void GameService::showMainMenu()
 	{
 		setGameState(GameState::MAIN_MENU);
-	}
+	}*/
 
 	void GameService::setGameState(GameState new_state)
 	{

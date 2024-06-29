@@ -8,6 +8,8 @@ namespace Global
 
 	const sf::String Config::player_texture_path = "assets/textures/player_ship.png";
 
+	const sf::String Config:: game_logo_texture_path = "assets/textures/ShipShootersIntroImage.png";
+
 
 	const sf::String Config::zapper_texture_path = "assets/textures/zapper.png";
 
@@ -46,4 +48,11 @@ namespace Global
 	const sf::String Config::background_music_path = "assets/sounds/background_music.mp3";
 
 	const sf::String Config::button_click_sound_path = "assets/sounds/button_click_sound.wav";
+
+	const sf::String Config::fire_bullet_sound_path = "assets/sounds/bullet_fire.ogg";
+
+	const sf::String Config::explosion_sound_path = "assets/sounds/explosion.wav";
+
+
+	const sf::String Config::explosion_texture_path = "assets/textures/explosion.png";
 }

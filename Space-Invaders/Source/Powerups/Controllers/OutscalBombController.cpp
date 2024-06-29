@@ -19,7 +19,7 @@ namespace Powerup
 		{
 			current_enemies = ServiceLocator::getInstance()->getEnemyService()->getCurrentEnemies();
 			ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(current_enemies);
-			ServiceLocator::getInstance()->getEnemyService()->reset();
+			ServiceLocator::getInstance()->getEnemyService()->bombDestroy();
 		}
 
 		OutscalBombController::~OutscalBombController()

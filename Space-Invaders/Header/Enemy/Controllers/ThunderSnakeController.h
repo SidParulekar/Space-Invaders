@@ -8,12 +8,11 @@ namespace Enemy
 		class ThunderSnakeController: public EnemyController
 		{
         private:
-            float vertical_travel_distance = 100.f;
+            float vertical_travel_distance = 50.f;
 
             void move() override;
             void moveLeft();
-            void moveRight();
-            void moveDown();
+            void moveRight();       
 
             void fireBullet() override;
 
