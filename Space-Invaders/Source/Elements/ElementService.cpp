@@ -41,6 +41,10 @@ namespace Element
 
 	void ElementService::destroyBunker(Bunker::BunkerController* bunker_controller)
 	{
+		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(bunker_controller->getBunkerPosition(),
+			Animation::AnimationType::EXPLOSION);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+
 		flagged_bunker_list.push_back(bunker_controller);
 		bunker_list.erase(std::remove(bunker_list.begin(), bunker_list.end(), bunker_controller), bunker_list.end());
 	}

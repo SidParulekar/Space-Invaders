@@ -98,11 +98,30 @@ namespace Enemy
 
 	void EnemyService::destroyEnemy(EnemyController* enemy_controller)
 	{
+		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(enemy_controller->getEnemyPosition(),
+			Animation::AnimationType::EXPLOSION);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+
 		dynamic_cast<ICollider*>(enemy_controller)->disableCollision();
 		flagged_enemy_list.push_back(enemy_controller);
 		//ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_controller));
 		enemy_list.erase(std::remove(enemy_list.begin(), enemy_list.end(), enemy_controller), enemy_list.end());
 		//delete enemy_controller;
+	}
+
+	void EnemyService::bombDestroy()
+	{
+		for (int i = 0; i < enemy_list.size(); i++)
+		{
+			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(enemy_list[i]->getEnemyPosition(),
+				Animation::AnimationType::EXPLOSION); 
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+			ServiceLocator::getInstance()->getCollisionService()->removeCollider(dynamic_cast<ICollider*>(enemy_list[i]));
+			delete (enemy_list[i]);
+		}
+		enemy_list.clear();
+
+		spawn_timer = 0.0f;
 	}
 
 	void EnemyService::destroyFlaggedEnemies()

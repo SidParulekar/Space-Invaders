@@ -24,6 +24,9 @@ namespace Sound
 
 		if (!buffer_fire_bullet.loadFromFile(Config::fire_bullet_sound_path))
 			printf("Error loading background music file");
+
+		if (!buffer_explosion.loadFromFile(Config::explosion_sound_path))
+			printf("Error loading background music file");
 	}
 
 	void SoundService::playSound(SoundType sound_type)
@@ -36,6 +39,10 @@ namespace Sound
 
 		case SoundType::FIRE_BULLET:
 			sound_effect.setBuffer(buffer_fire_bullet);
+			break;
+
+		case SoundType::EXPLOSION:
+			sound_effect.setBuffer(buffer_explosion);
 			break;
 
 		default:

@@ -253,6 +253,10 @@ namespace Player
 	{
 		PlayerModel::player_lives -= 1;
 
+		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getPlayerPosition(),
+			Animation::AnimationType::EXPLOSION);
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
+
 		if (PlayerModel::player_lives <= 0)
 		{
 			ServiceLocator::getInstance()->getGameplayService()->restart();

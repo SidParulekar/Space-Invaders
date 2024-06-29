@@ -1,5 +1,6 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationSystem.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
 
 namespace Animation
 {
@@ -33,7 +34,7 @@ namespace Animation
 
 	void AnimationSystem::initializeImage()
 	{
-		animation_image->initialize(animation_system_config.Animation_texture_path, 0, 0, animation_position);
+		animation_image->initialize(Config::explosion_texture_path, 0, 0, animation_position);
 		animation_image->setTextureRect(sf::IntRect(0, 0, animation_system_config.tile_width, animation_system_config.tile_height));
 
 		animation_image->setScale(animation_system_config.sprite_sheet_width, animation_system_config.sprite_sheet_height, animation_system_config.tile_width, animation_system_config.tile_height);
@@ -65,6 +66,6 @@ namespace Animation
 
 	void AnimationSystem::destroy()
 	{
-		//ServiceLocator::getInstance()->getAnimationService()->destroyAnimationSystem(this);
+		ServiceLocator::getInstance()->getAnimationService()->destroyAnimationSystem(this);
 	}
 }

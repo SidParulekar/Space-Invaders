@@ -43,6 +43,8 @@ namespace Enemy
 
 		void destroyEnemy(EnemyController* enemy_controller);
 
+		void bombDestroy();
+
 		
 	};
 }

@@ -16,6 +16,7 @@ namespace Global
 	using namespace Bullet;
 	using namespace Powerup;
 	using namespace Collision;
+	using namespace Animation;
 
 	ServiceLocator::ServiceLocator()
 	{
