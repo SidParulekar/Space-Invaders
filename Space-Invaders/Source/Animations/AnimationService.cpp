@@ -23,7 +23,7 @@ namespace Animation
 
 	void AnimationService::spawnAnimationSystem(sf::Vector2f position, AnimationType animation_type)
 	{
-		AnimationSystem* animation_system = new AnimationSystem(getAnimationSystemConfig(animation_type));
+		AnimationSystem* animation_system = new AnimationSystem(getAnimationSystemConfig(animation_type), getAnimationTexturePath(animation_type));
 		animation_system->initialize(position);
 		animation_system_list.push_back(animation_system);
 	}
@@ -34,6 +34,15 @@ namespace Animation
 		{
 		case Animation::AnimationType::EXPLOSION:
 			return explosion_animation_config;
+		}
+	}
+
+	sf::String AnimationService::getAnimationTexturePath(AnimationType animation_type)
+	{
+		switch (animation_type)
+		{
+		case Animation::AnimationType::EXPLOSION:
+			return Config::explosion_texture_path;
 		}
 	}
 

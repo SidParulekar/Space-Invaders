@@ -16,6 +16,7 @@ namespace Animation
 		std::vector<AnimationSystem*> flagged_animation_system_list;
 
 		AnimationSystemConfig getAnimationSystemConfig(AnimationType animation_type);
+		sf::String getAnimationTexturePath(AnimationType animation_type);
 		void destroyFlaggedAnimationSystem();
 		void destroy();
 

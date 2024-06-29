@@ -116,9 +116,9 @@ namespace Enemy
 			return;	
 		}
 
-		//If SUBZERO enemy has collided with bunker
+		//If enemy has collided with bunker
 		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
-		if (bunker_controller && getEnemyType() == EnemyType::SUBZERO) 
+		if (bunker_controller) 
 		{
 			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
 			return;

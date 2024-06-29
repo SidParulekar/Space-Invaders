@@ -10,6 +10,8 @@ namespace Animation
     private:
         AnimationSystemConfig animation_system_config;
 
+        sf::String animation_texture_path;
+
         sf::Vector2f animation_position;
         UI::UIElement::ImageView* animation_image;
 
@@ -21,7 +23,7 @@ namespace Animation
         sf::Time frame_time;
 
     public:
-        AnimationSystem(AnimationSystemConfig config);
+        AnimationSystem(AnimationSystemConfig config, sf::String);
         ~AnimationSystem();
 
         void initialize(sf::Vector2f position);

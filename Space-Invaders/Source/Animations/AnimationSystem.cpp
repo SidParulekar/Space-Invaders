@@ -7,9 +7,10 @@ namespace Animation
 	using namespace Global;
 	using namespace UI::UIElement;
 
-	AnimationSystem::AnimationSystem(AnimationSystemConfig config)
+	AnimationSystem::AnimationSystem(AnimationSystemConfig config, sf::String texture_path)
 	{
 		animation_system_config = config;
+		animation_texture_path = texture_path;
 		createUIElements();
 	}
 
@@ -34,7 +35,7 @@ namespace Animation
 
 	void AnimationSystem::initializeImage()
 	{
-		animation_image->initialize(Config::explosion_texture_path, 0, 0, animation_position);
+		animation_image->initialize(animation_texture_path, 0, 0, animation_position);
 		animation_image->setTextureRect(sf::IntRect(0, 0, animation_system_config.tile_width, animation_system_config.tile_height));
 
 		animation_image->setScale(animation_system_config.sprite_sheet_width, animation_system_config.sprite_sheet_height, animation_system_config.tile_width, animation_system_config.tile_height);
