@@ -11,6 +11,7 @@
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupService.h"
 #include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\CollisionService.h"
+#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationService.h"
 
 // ServiceLocator Class Summary: This class manages access to various services in the application.
 
@@ -28,6 +29,7 @@ namespace Global
     using namespace Bullet;
     using namespace Powerup;
     using namespace Collision;
+    using namespace Animation;
 
     class ServiceLocator
     {
@@ -45,6 +47,7 @@ namespace Global
         BulletService* bullet_service;
         PowerupService* powerup_service;
         CollisionService* collision_service;
+        AnimationService* animation_service;
 
         // Constructor for initializing the ServiceLocator.
         ServiceLocator();
@@ -79,6 +82,7 @@ namespace Global
         BulletService* getBulletService(); // Retrieve the BulletService instance
         PowerupService* getPowerupService(); // Retrieve the PowerupService instance
         CollisionService* getCollisionService(); // Retrieve the CollisionService instance
+        AnimationService* getAnimationService(); // Retrieve the AnimationService instance
 
     };
 
