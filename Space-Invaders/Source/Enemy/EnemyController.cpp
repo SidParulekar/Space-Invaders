@@ -104,6 +104,7 @@ namespace Enemy
 		BulletController* bullet_controller = dynamic_cast<BulletController*>(other_collider);
 		if (bullet_controller && bullet_controller->getOwnerEntityType() != EntityType::ENEMY)
 		{ 
+			ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1); 
 			destroy();
 			return;	
 		}
@@ -112,6 +113,7 @@ namespace Enemy
 		PlayerController* player_controller = dynamic_cast<PlayerController*>(other_collider);
 		if (player_controller)
 		{ 
+			ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1); 
 			destroy();
 			return;	
 		}
@@ -120,11 +122,7 @@ namespace Enemy
 		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
 		if (bunker_controller) 
 		{
-			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getEnemyPosition(), 
-				Animation::AnimationType::EXPLOSION);
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
-
-			ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this);
+			destroy();
 			return;
 		}
 			
@@ -135,8 +133,6 @@ namespace Enemy
 		ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getEnemyPosition(), 
 			Animation::AnimationType::EXPLOSION);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
-
-		ServiceLocator::getInstance()->getPlayerService()->increaseEnemiesKilled(1);
 		ServiceLocator::getInstance()->getEnemyService()->destroyEnemy(this); 	
 	}
 
