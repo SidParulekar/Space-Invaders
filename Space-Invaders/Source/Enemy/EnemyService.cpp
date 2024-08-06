@@ -107,6 +107,9 @@ namespace Enemy
 	{
 		for (int i = 0; i < enemy_list.size(); i++)
 		{
+			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(enemy_list[i]->getEnemyPosition(),
+				Animation::AnimationType::EXPLOSION);
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION);
 			destroyEnemy(enemy_list[i]);
 		}
 		enemy_list.clear();

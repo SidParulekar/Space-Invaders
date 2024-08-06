@@ -141,7 +141,13 @@ namespace Bullet
 		BunkerController* bunker_controller = dynamic_cast<BunkerController*>(other_collider);
 
 		if (bunker_controller)
+		{
+			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getProjectilePosition(), 
+				Animation::AnimationType::EXPLOSION); 
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION); 
 			ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
+		}
+			
 	}
 
 	BulletController::~BulletController()
