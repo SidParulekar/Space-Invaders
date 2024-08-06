@@ -142,9 +142,6 @@ namespace Bullet
 
 		if (bunker_controller)
 		{
-			ServiceLocator::getInstance()->getAnimationService()->spawnAnimationSystem(getProjectilePosition(), 
-				Animation::AnimationType::EXPLOSION); 
-			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::EXPLOSION); 
 			ServiceLocator::getInstance()->getBulletService()->destroyBullet(this);
 		}
 			
