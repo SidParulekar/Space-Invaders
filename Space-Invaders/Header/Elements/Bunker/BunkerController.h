@@ -1,6 +1,6 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerModel.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Elements\Bunker\BunkerModel.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Collisions\ICollider.h"
 #include <SFML/Graphics.hpp>
 
 namespace Element

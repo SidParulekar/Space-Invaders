@@ -1,5 +1,5 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationService.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationSystemConfigData.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationService.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationSystemConfigData.h"
 
 namespace Animation
 {

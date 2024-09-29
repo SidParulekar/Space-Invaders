@@ -1,7 +1,7 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerView.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerView.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Player\PlayerController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
 
 namespace Player
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Bullets\BulletConfig.h"
 #include <SFML/System/Vector2.hpp>
 
 namespace Projectile

@@ -1,7 +1,7 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\SplashScreen\SplashScreenUIController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\SplashScreen\SplashScreenUIController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Config.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Game\GameService.h"
 
 namespace UI
 {

@@ -1,4 +1,4 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupModel.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupModel.h"
 
 namespace Powerup
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "SFML/System/Vector2.hpp"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Collectibles\ICollectible.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Collectibles\ICollectible.h"
 
 namespace Powerup
 {

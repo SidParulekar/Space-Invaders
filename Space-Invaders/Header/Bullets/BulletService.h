@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include "SFML/System/Vector2.hpp"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Projectiles\IProjectile.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Projectiles\IProjectile.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Entities\EntityConfig.h"
 
 namespace Bullet
 {

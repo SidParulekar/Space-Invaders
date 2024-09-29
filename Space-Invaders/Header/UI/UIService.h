@@ -1,8 +1,8 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\SplashScreen\SplashScreenUIController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\MainMenu\MainMenuController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\GameplayUI\GameplayUIController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\SplashScreen\SplashScreenUIController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\MainMenu\MainMenuController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\GameplayUI\GameplayUIController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
 
 namespace UI
 {

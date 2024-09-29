@@ -1,6 +1,6 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationSystemConfig.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Animations\AnimationSystemConfig.h"
 #include <SFML/Graphics.hpp>
 
 namespace Animation

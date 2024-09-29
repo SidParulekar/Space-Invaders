@@ -1,8 +1,8 @@
 #pragma once
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\TextView.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\UI\AnimatedImageView.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\Interface\IUIController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\ImageView.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\TextView.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\UI\AnimatedImageView.h"
 
 namespace UI
 {

@@ -1,11 +1,11 @@
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupService.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\OutscalBombController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\RapidFireController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\ShieldController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\TripleLaserController.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupConfig.h"
-#include "C:\Users\sidpa\Documents\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupService.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\OutscalBombController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\RapidFireController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\ShieldController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\Controllers\TripleLaserController.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\Powerups\PowerupConfig.h"
+#include "..\..\..\..\..\GitHub\Space-Invaders\Space-Invaders\Header\ServiceLocator.h"
 
 namespace Powerup
 {
